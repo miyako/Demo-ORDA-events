@@ -1,0 +1,29 @@
+{
+	"classes": [
+		{
+			"name": "cartStyleColumn",
+			"content": "self {\n  background-color : #ffffffff;\n  box-shadow : 0px 0px 6px 0px #00000023;\n  display : flex;\n  flex-direction : column;\n  align-items : start;\n  justify-content : flex-start;\n  gap : 10px;\n  border-width : 1px;\n  border-radius : 20px;\n\t}",
+			"parentId": null,
+			"id": "2rzhgkJfC28cG0j5G8rJy"
+		},
+		{
+			"name": "matrixStyle",
+			"content": "self .FdVirtualGrid > div .selected {\nbackground-color: #d2e2f9;\n  border-radius : 15px;\n}",
+			"parentId": null,
+			"id": "wA6Hx9Y_BIRY3E9HV6IhS"
+		},
+		{
+			"id": "3rPN3ThaIlTF3y1oX2BKf",
+			"name": "cartStyleRow",
+			"content": "self {\n  background-color : #ffffffff;\n  box-shadow : 0px 0px 6px 0px #00000023;\n  display : flex;\n  align-items : center;\n  justify-content : space-between;\n  gap : 10px;\n  margin-top : 0px;\n  border-width : 1px;\n  border-radius : 20px;\n\t}",
+			"parentId": null,
+			"children": {}
+		},
+		{
+			"name": "flex_grow",
+			"content": "self {\n\tflex-grow: 1;\n}",
+			"parentId": null,
+			"id": "9AxeiBveGZW0QJjsvN4Tj"
+		}
+	]
+}

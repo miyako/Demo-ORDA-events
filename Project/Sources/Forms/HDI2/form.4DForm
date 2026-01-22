@@ -1,0 +1,943 @@
+{
+	"destination": "detailScreen",
+	"windowMinWidth": 800,
+	"windowMaxWidth": 32000,
+	"windowMinHeight": 540,
+	"windowMaxHeight": 32000,
+	"width": 1200,
+	"height": 900,
+	"menuBar": "Menu Bar #1",
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onCloseBox",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "842pt",
+		"paperHeight": "595pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"Tab Control": {
+					"type": "tab",
+					"top": 20,
+					"left": 20,
+					"width": 1160,
+					"height": 860,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSource": "objTabs",
+					"dataSourceTypeHint": "object",
+					"action": "gotoPage",
+					"events": [
+						"onClick"
+					]
+				},
+				"Check Box3": {
+					"type": "checkbox",
+					"text": "Trace",
+					"top": 850,
+					"left": 30,
+					"width": 70,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "btnTrace",
+					"fontSize": 14,
+					"sizingY": "fixed"
+				}
+			}
+		},
+		{
+			"objects": {
+				"information": {
+					"type": "input",
+					"top": 110,
+					"left": 50,
+					"width": 1000,
+					"height": 550,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"dataSource": "Infos[0].Description",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"styledText": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"class": "description"
+				}
+			}
+		},
+		{
+			"objects": {
+				"NewProductValue3": {
+					"type": "input",
+					"left": 120,
+					"top": 530,
+					"width": 80,
+					"height": 20,
+					"dataSource": "Form:C1466.product.costPrice",
+					"visibility": "hidden",
+					"dataSourceTypeHint": "number",
+					"events": [
+						"onAfterKeystroke"
+					],
+					"sizingY": "fixed"
+				},
+				"SaveButton": {
+					"type": "button",
+					"text": "Save",
+					"top": 730,
+					"left": 200,
+					"width": 100,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/SaveButton.4dm",
+					"focusable": false,
+					"sizingY": "fixed",
+					"visibility": "hidden"
+				},
+				"NewProductLabel3": {
+					"type": "text",
+					"text": "Cost price",
+					"top": 530,
+					"left": 20,
+					"width": 80,
+					"height": 20,
+					"textAlign": "right",
+					"visibility": "hidden",
+					"sizingY": "fixed"
+				},
+				"Button1": {
+					"type": "button",
+					"text": "Initialize products",
+					"top": 160,
+					"left": 765,
+					"width": 150,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button1.4dm",
+					"focusable": false,
+					"sizingY": "fixed"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Products list",
+					"top": 160,
+					"left": 30,
+					"width": 140,
+					"height": 20,
+					"fontWeight": "bold",
+					"fontSize": 16,
+					"stroke": "#6495ed",
+					"sizingY": "fixed"
+				},
+				"Input": {
+					"type": "input",
+					"left": 141,
+					"top": 160,
+					"width": 80,
+					"height": 20,
+					"dataSource": "\"(\"+String:C10(Form:C1466.products.length)+\")\"",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"fontWeight": "bold",
+					"borderStyle": "none",
+					"stroke": "#6495ed",
+					"fontSize": 16,
+					"sizingY": "fixed"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "The save status",
+					"top": 440,
+					"left": 620,
+					"width": 180,
+					"height": 20,
+					"fontWeight": "bold",
+					"stroke": "#6495ed",
+					"fontSize": 14,
+					"sizingY": "fixed"
+				},
+				"NewProductValue2": {
+					"type": "input",
+					"left": 320,
+					"top": 530,
+					"width": 80,
+					"height": 20,
+					"dataSource": "Form:C1466.product.retailPrice",
+					"visibility": "hidden",
+					"dataSourceTypeHint": "number",
+					"events": [
+						"onAfterKeystroke"
+					],
+					"sizingY": "fixed"
+				},
+				"NewProductLabel2": {
+					"type": "text",
+					"text": "Retail price",
+					"top": 530,
+					"left": 210,
+					"width": 80,
+					"height": 20,
+					"textAlign": "right",
+					"visibility": "hidden",
+					"sizingY": "fixed"
+				},
+				"Input3": {
+					"type": "input",
+					"left": 620,
+					"top": 460,
+					"width": 550,
+					"height": 410,
+					"dataSource": "Form:C1466.status",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"sizingY": "fixed"
+				},
+				"Info": {
+					"type": "input",
+					"left": 60,
+					"top": 820,
+					"width": 400,
+					"height": 20,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"dataSource": "Form:C1466.info",
+					"fontWeight": "bold",
+					"borderStyle": "none",
+					"textAlign": "center",
+					"visibility": "hidden",
+					"sizingY": "fixed"
+				},
+				"Message": {
+					"type": "input",
+					"left": 60,
+					"top": 780,
+					"width": 400,
+					"height": 20,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"dataSource": "Form:C1466.message",
+					"fontWeight": "bold",
+					"borderStyle": "none",
+					"textAlign": "center",
+					"visibility": "hidden",
+					"sizingY": "fixed"
+				},
+				"MarginValue": {
+					"type": "input",
+					"left": 500,
+					"top": 530,
+					"width": 80,
+					"height": 20,
+					"dataSource": "Form:C1466.product.margin",
+					"visibility": "hidden",
+					"dataSourceTypeHint": "number",
+					"events": [
+						"onAfterKeystroke"
+					],
+					"sizingY": "fixed",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"fontWeight": "bold",
+					"stroke": "#008000"
+				},
+				"MarginLabel": {
+					"type": "text",
+					"text": "Margin",
+					"top": 530,
+					"left": 410,
+					"width": 80,
+					"height": 20,
+					"textAlign": "right",
+					"visibility": "hidden",
+					"sizingY": "fixed",
+					"fontWeight": "bold"
+				},
+				"NewProductLog": {
+					"type": "checkbox",
+					"text": "Check this to simulate there is no more space on disk",
+					"top": 680,
+					"left": 80,
+					"width": 450,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.noSpace",
+					"method": "ObjectMethods/NewProductLog.4dm",
+					"visibility": "hidden",
+					"sizingY": "fixed"
+				},
+				"Button": {
+					"type": "button",
+					"text": "New product",
+					"top": 390,
+					"left": 30,
+					"width": 130,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"focusable": false,
+					"method": "ObjectMethods/Button.4dm",
+					"sizingY": "fixed"
+				},
+				"LBProducts1": {
+					"type": "listbox",
+					"left": 30,
+					"top": 190,
+					"width": 885,
+					"height": 181,
+					"events": [
+						"onClick",
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.products",
+					"headerHeight": "21px",
+					"rowHeight": "20px",
+					"focusable": false,
+					"scrollbarHorizontal": "hidden",
+					"sizingY": "fixed",
+					"selectionMode": "none",
+					"columns": [
+						{
+							"header": {
+								"text": "Name",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.name",
+							"enterable": false,
+							"width": 150
+						},
+						{
+							"header": {
+								"text": "Cost price",
+								"name": "Header4"
+							},
+							"name": "Column4",
+							"footer": {
+								"name": "Footer4"
+							},
+							"dataSource": "This:C1470.costPrice",
+							"enterable": false,
+							"width": 80,
+							"dataSourceTypeHint": "number",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"text": "Retail price",
+								"name": "Header5"
+							},
+							"name": "Column5",
+							"footer": {
+								"name": "Footer5"
+							},
+							"dataSource": "This:C1470.retailPrice",
+							"enterable": false,
+							"width": 80,
+							"dataSourceTypeHint": "number",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"text": "Margin %",
+								"name": "Header2"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.margin",
+							"enterable": false,
+							"width": 80,
+							"dataSourceTypeHint": "number",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"text": "UserManualPath",
+								"name": "Header12"
+							},
+							"name": "Column12",
+							"footer": {
+								"name": "Footer12"
+							},
+							"dataSource": "This:C1470.userManualPath",
+							"enterable": false,
+							"width": 400,
+							"dataSourceTypeHint": "text",
+							"textAlign": "automatic"
+						},
+						{
+							"header": {
+								"text": "Status",
+								"name": "Header11"
+							},
+							"name": "Column11",
+							"footer": {
+								"name": "Footer11"
+							},
+							"dataSource": "This:C1470.status",
+							"enterable": false,
+							"width": 80,
+							"dataSourceTypeHint": "text",
+							"textAlign": "center"
+						}
+					]
+				},
+				"information3": {
+					"type": "input",
+					"top": 73,
+					"left": 30,
+					"width": 900,
+					"height": 60,
+					"sizingY": "fixed",
+					"dataSource": "Infos[1].Description",
+					"focusable": false,
+					"fill": "#B9CFBD",
+					"borderStyle": "none",
+					"enterable": false,
+					"styledText": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"class": "description",
+					"method": "ObjectMethods/information3.4dm",
+					"textAlign": "center",
+					"fontSize": 18
+				},
+				"Button7": {
+					"type": "button",
+					"text": "Open ProductsEntity class",
+					"top": 390,
+					"left": 200,
+					"width": 200,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button7.4dm",
+					"focusable": false,
+					"sizingY": "fixed"
+				},
+				"NewProductValue1": {
+					"type": "input",
+					"left": 120,
+					"top": 490,
+					"width": 150,
+					"height": 20,
+					"dataSource": "Form:C1466.product.name",
+					"visibility": "hidden",
+					"events": [
+						"onAfterKeystroke"
+					],
+					"sizingY": "fixed"
+				},
+				"NewProductLabel1": {
+					"type": "text",
+					"text": "Name",
+					"top": 490,
+					"left": 0,
+					"width": 100,
+					"height": 20,
+					"textAlign": "right",
+					"visibility": "hidden",
+					"sizingY": "fixed"
+				},
+				"UserManualValue": {
+					"type": "input",
+					"left": 200,
+					"top": 590,
+					"width": 400,
+					"height": 20,
+					"dataSource": "Form:C1466.product.userManualPath",
+					"visibility": "hidden",
+					"events": [
+						"onAfterKeystroke"
+					],
+					"sizingY": "fixed",
+					"enterable": false,
+					"focusable": false,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"fontWeight": "bold",
+					"stroke": "#008000"
+				},
+				"UserManualLabel": {
+					"type": "text",
+					"text": "User manual path",
+					"top": 590,
+					"left": 0,
+					"width": 180,
+					"height": 20,
+					"textAlign": "right",
+					"visibility": "hidden",
+					"sizingY": "fixed",
+					"fontWeight": "bold"
+				},
+				"StatusValue": {
+					"type": "input",
+					"left": 200,
+					"top": 620,
+					"width": 400,
+					"height": 20,
+					"dataSource": "Form:C1466.product.status",
+					"visibility": "hidden",
+					"events": [
+						"onAfterKeystroke"
+					],
+					"sizingY": "fixed",
+					"enterable": false,
+					"focusable": false,
+					"borderStyle": "none",
+					"fill": "transparent",
+					"fontWeight": "bold",
+					"stroke": "#008000"
+				},
+				"StatusLabel": {
+					"type": "text",
+					"text": "Status",
+					"top": 620,
+					"left": 80,
+					"width": 100,
+					"height": 20,
+					"textAlign": "right",
+					"visibility": "hidden",
+					"sizingY": "fixed",
+					"fontWeight": "bold"
+				},
+				"Line2": {
+					"type": "line",
+					"top": 430,
+					"left": 50,
+					"width": 1100,
+					"height": 5,
+					"stroke": "#6495ed",
+					"strokeDashArray": [
+						1,
+						3
+					],
+					"sizingY": "fixed"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Create a new product here",
+					"top": 440,
+					"left": 50,
+					"width": 280,
+					"height": 20,
+					"fontWeight": "bold",
+					"stroke": "#6495ed",
+					"fontSize": 16,
+					"sizingY": "fixed"
+				}
+			},
+			"entryOrder": [
+				"Info",
+				"NewProductValue3",
+				"NewProductValue2",
+				"information3",
+				"Button7",
+				"NewProductValue1",
+				"UserManualValue",
+				"StatusValue"
+			]
+		},
+		{
+			"objects": {
+				"Line1": {
+					"type": "line",
+					"top": 510,
+					"left": 50,
+					"width": 1100,
+					"height": 5,
+					"stroke": "#6495ed",
+					"strokeDashArray": [
+						1,
+						3
+					],
+					"sizingY": "fixed"
+				},
+				"DropButton": {
+					"type": "button",
+					"text": "Drop",
+					"top": 380,
+					"left": 200,
+					"width": 100,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/DropButton.4dm",
+					"focusable": false,
+					"sizingY": "fixed",
+					"visibility": "visible"
+				},
+				"Text6": {
+					"type": "text",
+					"text": "The drop status",
+					"top": 523,
+					"left": 535,
+					"width": 180,
+					"height": 20,
+					"fontWeight": "bold",
+					"stroke": "#6495ed",
+					"fontSize": 14,
+					"sizingY": "fixed"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 535,
+					"top": 543,
+					"width": 550,
+					"height": 320,
+					"dataSource": "Form:C1466.status",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"sizingY": "fixed"
+				},
+				"Info2": {
+					"type": "input",
+					"left": 40,
+					"top": 618,
+					"width": 470,
+					"height": 30,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"dataSource": "Form:C1466.info",
+					"fontWeight": "bold",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"visibility": "hidden",
+					"sizingY": "fixed"
+				},
+				"Message2": {
+					"type": "input",
+					"left": 40,
+					"top": 588,
+					"width": 470,
+					"height": 30,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"dataSource": "Form:C1466.message",
+					"fontWeight": "bold",
+					"borderStyle": "none",
+					"textAlign": "left",
+					"visibility": "hidden",
+					"multiline": "yes",
+					"sizingY": "fixed"
+				},
+				"ToDeleteButton": {
+					"type": "button",
+					"text": "Mark as to delete",
+					"top": 380,
+					"left": 30,
+					"width": 150,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/ToDeleteButton.4dm",
+					"focusable": false,
+					"sizingY": "fixed",
+					"visibility": "visible"
+				},
+				"information1": {
+					"type": "input",
+					"top": 73,
+					"left": 30,
+					"width": 900,
+					"height": 60,
+					"sizingY": "fixed",
+					"dataSource": "Infos[2].Description",
+					"focusable": false,
+					"fill": "#B9CFBD",
+					"borderStyle": "none",
+					"enterable": false,
+					"styledText": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onClick"
+					],
+					"class": "description",
+					"method": "ObjectMethods/information1.4dm",
+					"textAlign": "center",
+					"fontSize": 18
+				},
+				"Button2": {
+					"type": "button",
+					"text": "Initialize products",
+					"top": 160,
+					"left": 945,
+					"width": 150,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button2.4dm",
+					"focusable": false,
+					"sizingY": "fixed"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Products list",
+					"top": 160,
+					"left": 30,
+					"width": 140,
+					"height": 20,
+					"fontWeight": "bold",
+					"fontSize": 16,
+					"stroke": "#6495ed",
+					"sizingY": "fixed"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 141,
+					"top": 160,
+					"width": 80,
+					"height": 20,
+					"dataSource": "\"(\"+String:C10(Form:C1466.products.length)+\")\"",
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"fontWeight": "bold",
+					"borderStyle": "none",
+					"stroke": "#6495ed",
+					"fontSize": 16,
+					"sizingY": "fixed"
+				},
+				"LBProducts2": {
+					"type": "listbox",
+					"left": 30,
+					"top": 190,
+					"width": 1075,
+					"height": 181,
+					"events": [
+						"onClick",
+						"onSelectionChange"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.products",
+					"headerHeight": "21px",
+					"rowHeight": "20px",
+					"focusable": false,
+					"scrollbarHorizontal": "hidden",
+					"sizingY": "fixed",
+					"selectionMode": "single",
+					"currentItemSource": "Form:C1466.selectedProduct",
+					"method": "ObjectMethods/LBProducts2.4dm",
+					"columns": [
+						{
+							"header": {
+								"text": "Name",
+								"name": "Header7"
+							},
+							"name": "Column7",
+							"footer": {
+								"name": "Footer7"
+							},
+							"dataSource": "This:C1470.name",
+							"enterable": false,
+							"width": 150
+						},
+						{
+							"header": {
+								"text": "Cost price",
+								"name": "Header8"
+							},
+							"name": "Column8",
+							"footer": {
+								"name": "Footer8"
+							},
+							"dataSource": "This:C1470.costPrice",
+							"enterable": false,
+							"width": 80,
+							"dataSourceTypeHint": "number",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"text": "Retail price",
+								"name": "Header9"
+							},
+							"name": "Column9",
+							"footer": {
+								"name": "Footer9"
+							},
+							"dataSource": "This:C1470.retailPrice",
+							"enterable": false,
+							"width": 80,
+							"dataSourceTypeHint": "number",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"text": "Margin %",
+								"name": "Header10"
+							},
+							"name": "Column10",
+							"footer": {
+								"name": "Footer10"
+							},
+							"dataSource": "This:C1470.margin",
+							"enterable": false,
+							"width": 80,
+							"dataSourceTypeHint": "number",
+							"textAlign": "center"
+						},
+						{
+							"header": {
+								"text": "UserManualPath",
+								"name": "Header14"
+							},
+							"name": "Column14",
+							"footer": {
+								"name": "Footer14"
+							},
+							"dataSource": "This:C1470.userManualPath",
+							"enterable": false,
+							"width": 350,
+							"dataSourceTypeHint": "text",
+							"textAlign": "automatic"
+						},
+						{
+							"header": {
+								"text": "Status",
+								"name": "Header15"
+							},
+							"name": "Column15",
+							"footer": {
+								"name": "Footer15"
+							},
+							"dataSource": "This:C1470.status",
+							"enterable": false,
+							"width": 320,
+							"dataSourceTypeHint": "text",
+							"textAlign": "left"
+						}
+					]
+				},
+				"Button3": {
+					"type": "button",
+					"text": "Open ProductsEntity class",
+					"top": 380,
+					"left": 350,
+					"width": 200,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button3.4dm",
+					"focusable": false,
+					"sizingY": "fixed"
+				},
+				"NewProductLog1": {
+					"type": "checkbox",
+					"text": "Check this to simulate an error while dropping the user manual on disk",
+					"top": 440,
+					"left": 30,
+					"width": 480,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"dataSource": "Form:C1466.errorOnDropFile",
+					"method": "ObjectMethods/NewProductLog1.4dm",
+					"visibility": "visible",
+					"sizingY": "fixed"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Drop a product here",
+					"top": 530,
+					"left": 50,
+					"width": 280,
+					"height": 20,
+					"fontWeight": "bold",
+					"stroke": "#6495ed",
+					"fontSize": 16,
+					"sizingY": "fixed"
+				}
+			}
+		},
+		{
+			"objects": {
+				"Input14": {
+					"type": "input",
+					"left": 50,
+					"top": 160,
+					"width": 500,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Input14.4dm",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "\"Click here to run the demo in Qodly studio\"",
+					"enterable": false,
+					"focusable": false,
+					"textDecoration": "underline",
+					"stroke": "#1e90ff",
+					"fontSize": 18
+				}
+			}
+		}
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"geometryStamp": 5449
+}

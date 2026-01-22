@@ -1,0 +1,27 @@
+{
+	"Quantities": {
+		"editable": false,
+		"items": [
+			{
+				"text": "1",
+				"ref": 1,
+				"editable": true
+			},
+			{
+				"text": "2",
+				"ref": 2,
+				"editable": true
+			},
+			{
+				"text": "3",
+				"ref": 3,
+				"editable": true
+			},
+			{
+				"text": "4",
+				"ref": 4,
+				"editable": true
+			}
+		]
+	}
+}

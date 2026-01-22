@@ -1,0 +1,64 @@
+{
+	"forceLogin": true,
+	"restrictedByDefault": true,
+	"permissions": {
+		"allowed": [
+			{
+				"applyTo": "Utilities.getSalesPeople",
+				"type": "singletonMethod",
+				"execute": [
+					"forDemo"
+				]
+			},
+			{
+				"applyTo": "SalesPeople",
+				"type": "dataclass",
+				"read": [
+					"forDemo",
+					"forAuthentication"
+				]
+			},
+			{
+				"applyTo": "Utilities.resetSessionStorage",
+				"type": "singletonMethod",
+				"execute": [
+					"forDemo"
+				]
+			},
+			{
+				"applyTo": "Products",
+				"type": "dataclass",
+				"read": [
+					"forDemo"
+				]
+			},
+			{
+				"applyTo": "Users",
+				"type": "dataclass",
+				"read": [
+					"forAuthentication"
+				]
+			},
+			{
+				"applyTo": "ds.authentify",
+				"type": "method",
+				"promote": [
+					"forAuthentication"
+				]
+			}
+		]
+	},
+	"privileges": [
+		{
+			"id": "tsSiU7GB4R4RcYkE5D8YrC",
+			"privilege": "forDemo",
+			"includes": []
+		},
+		{
+			"id": "q9GgW9gkQsqW4pWLk4uFMZ",
+			"privilege": "forAuthentication",
+			"includes": []
+		}
+	],
+	"roles": []
+}

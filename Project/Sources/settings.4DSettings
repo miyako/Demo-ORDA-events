@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="24">
+	<com.4d>
+		<deployment>
+			<options/>
+		</deployment>
+		<general startup_environnement="1"/>
+		<interface>
+			<user sdi_application="true" splash_screen="false"/>
+			<shortcuts>
+				<accept_input_form alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
+			</shortcuts>
+		</interface>
+		<compiler>
+			<options compilation_path="3"/>
+		</compiler>
+		<server>
+			<network>
+				<options use_legacy_network_layer="false"/>
+				<client_server use_encryption="false"/>
+			</network>
+		</server>
+		<database>
+			<misc/>
+		</database>
+		<web>
+			<standalone_server>
+				<rest launch_at_startup="true"/>
+				<qodlystudio enabled="true"/>
+				<configuration allow_ssl="false" port_number="8044" publish_at_startup="true" session_mode="1"/>
+			</standalone_server>
+		</web>
+	</com.4d>
+</preferences>

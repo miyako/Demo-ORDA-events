@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="Demo-ORDA-events" uuid="2D4F6103DC084198BFC0283C03D0A0B2" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="INFO" uuid="107A367EBCC346259FD971E8FC1097DA" id="1">
+		<field name="ID" uuid="C6DBB917EEE44AF9BDA57ABA22C55C6B" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<field_extra position="1"/>
+		</field>
+		<field name="Description" uuid="C9EFE648E9234AADA33FB25D61C0190B" type="10" never_null="true" id="2">
+			<field_extra position="4"/>
+		</field>
+		<field name="TabTitle" uuid="58AF214936C941439CB263026A5B46ED" type="10" limiting_length="255" never_null="true" id="3">
+			<field_extra position="3"/>
+		</field>
+		<field name="PageNumber" uuid="A2D86BBFD5134D06999CBDD14FD07A27" type="4" never_null="true" id="4">
+			<field_extra position="2"/>
+		</field>
+		<primary_key field_name="ID" field_uuid="C6DBB917EEE44AF9BDA57ABA22C55C6B"/>
+		<table_extra input_form="Input" output_form="Output">
+			<editor_table_info fields_ordering="2" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="0" top="0" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Products" uuid="0196CED8FB6276498730C34B6B2F4FC6" id="2">
+		<field name="ID" uuid="0196CED8FB637B89B95E89069AF04AB5" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<field_extra position="1"/>
+		</field>
+		<field name="name" uuid="0196CED923E37B58958B27D51FB15D94" type="10" limiting_length="255" never_null="true" id="2">
+			<field_extra position="2" multi_line="false"/>
+		</field>
+		<field name="retailPrice" uuid="0196CED942897DB2A38AAAEFD2C00F23" type="6" never_null="true" id="3">
+			<field_extra position="3"/>
+		</field>
+		<field name="userManualPath" uuid="58901B63CBD941DA99208ED2C064699A" type="10" limiting_length="255" never_null="true" id="4">
+			<field_extra position="5"/>
+		</field>
+		<field name="costPrice" uuid="0196CED979357FCEB8C3AD332BEE9316" type="6" never_null="true" id="5">
+			<field_extra position="4"/>
+		</field>
+		<field name="status" uuid="F6FAD3FE206140189D9566CBCD0E330E" type="10" limiting_length="255" never_null="true" id="6"/>
+		<field name="salesId" uuid="B065C41F017349C4A0AE39879E15383F" type="4" never_null="true" id="7"/>
+		<primary_key field_name="ID" field_uuid="0196CED8FB637B89B95E89069AF04AB5"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="8">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="167.08203125" top="2.58203125" width="224.2109375" height="222.13671875"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(Addresses)" uuid="0196D48924607245B969744503D4D957" id="3" hide_in_REST="true">
+		<field name="ID" uuid="0196D48924627516ADD36D6BB153D8C1" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="street" uuid="0196D49A5D6376ED983D276EDC215D33" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="streetNumber" uuid="0196D49C3028794F980813CE812A9096" type="3" never_null="true" id="4"/>
+		<field name="zipCode" uuid="0196D49C79B179589CAD7D1504F792C7" type="10" limiting_length="255" never_null="true" id="5"/>
+		<field name="city" uuid="0196D49C92B478A38C25ED704EFFF02A" type="10" limiting_length="255" never_null="true" id="6"/>
+		<primary_key field_name="ID" field_uuid="0196D48924627516ADD36D6BB153D8C1"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="606.92578125" top="24.33984375" width="147.109375" height="186.046875"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(MailLabel)" uuid="0196D4951F867CD9A2B77A1552558D21" id="4" hide_in_REST="true">
+		<field name="ID" uuid="0196D4951F887E9FBE089498F19A0C75" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="line1" uuid="0196D4996A5079919751AA0827428A06" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="line2" uuid="0196D499ABA5798188F2F44E936849EB" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="line3" uuid="0196D499DBBA73AEA39B4CF36DB89E74" type="10" limiting_length="255" never_null="true" id="4"/>
+		<primary_key field_name="ID" field_uuid="0196D4951F887E9FBE089498F19A0C75"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="4">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="593.23046875" top="270.5234375" width="112.4140625" height="128.328125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(People)" uuid="0196D49AB7957DA5B03DA1389C3DE363" id="5" hide_in_REST="true">
+		<field name="ID" uuid="0196D49AB7977D74A78DAB80BB9807DC" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<field_extra position="1"/>
+		</field>
+		<field name="title" uuid="0196D49ADA3573BAA89E526E1B674ADF" type="10" limiting_length="255" never_null="true" id="2">
+			<field_extra position="2"/>
+		</field>
+		<field name="firstname" uuid="0196D49AF0797C10A757F8E8DF64D4B8" type="10" limiting_length="255" never_null="true" id="3">
+			<field_extra position="3"/>
+		</field>
+		<field name="lastname" uuid="0196D49B0C3D7687BEB486B4104BBB36" type="10" limiting_length="255" never_null="true" id="4">
+			<field_extra position="4"/>
+		</field>
+		<field name="mailLabelID" uuid="0196D86E0C9576F59974B50AF6DAAA72" type="4" never_null="true" id="6">
+			<field_extra position="9"/>
+		</field>
+		<field name="streetNumber" uuid="0196D87365F67E93BAFBCAD907A1F544" type="3" never_null="true" id="7">
+			<field_extra position="5"/>
+		</field>
+		<field name="street" uuid="0196D8739D087B7CAC36BF5E7E9AD2DD" type="10" limiting_length="255" never_null="true" id="8">
+			<field_extra position="6"/>
+		</field>
+		<field name="zipCode" uuid="0196D873B9977E499D5006B24D950E03" type="10" limiting_length="255" never_null="true" id="9">
+			<field_extra position="7"/>
+		</field>
+		<field name="city" uuid="0196D873DC8F78B095EA99DE0E9CDD05" type="10" limiting_length="255" never_null="true" id="10">
+			<field_extra position="8"/>
+		</field>
+		<primary_key field_name="ID" field_uuid="0196D49AB7977D74A78DAB80BB9807DC"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="2" displayable_fields_count="9">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="229.6640625" top="278.234375" width="300.11328125" height="233.19140625"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(OrderLine)" uuid="0196D8B21B21750E9F207D59EE17FCBF" id="6" hide_in_REST="true">
+		<field name="ID" uuid="0196D8B21B22772FAC46DFF0E634BB11" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="quantity" uuid="0196D8B25E4C7D4397D026690965AA5E" type="3" never_null="true" id="2"/>
+		<field name="productID" uuid="0196D8B3BE95749BAC1C9118AF69E7A6" type="4" never_null="true" id="3"/>
+		<field name="info" uuid="0196D8E2BFD273EB9851F2A8BEF390D4" type="10" limiting_length="255" never_null="true" id="4"/>
+		<field name="wrapSeparately" uuid="0196E8B54B1E74A786EB28E35E9CDCE8" type="1" never_null="true" id="5"/>
+		<primary_key field_name="ID" field_uuid="0196D8B21B22772FAC46DFF0E634BB11"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="5">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="620.37890625" top="13.9921875" width="278.41015625" height="152.19921875"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(OrderLinesLogs)" uuid="0196FC8878F27631857DFE59DBE2850E" id="7" hide_in_REST="true">
+		<field name="ID" uuid="0196FC8878F37C62959BDF9916EC1C5A" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="dataclass" uuid="0196FC889E677D95B901B12EB5420006" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="entityId" uuid="0196FC88BEBB70B4B12829C1DD227A4C" type="4" never_null="true" id="3">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="updatedBy" uuid="0196FC8916FB711680B74108E4EEE1C0" type="10" limiting_length="255" never_null="true" id="4">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="updateDate" uuid="0196FC8931E4707EAC0488F0EBBA7FE0" type="8" never_null="true" id="5">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="updateTime" uuid="0196FC8983AF7BDBB8339154D9D8F840" type="9" never_null="true" id="6"/>
+		<field name="attributeName" uuid="0196FC89DC4A769BB9CBC534B2D8A158" type="10" limiting_length="255" never_null="true" id="7"/>
+		<primary_key field_name="ID" field_uuid="0196FC8878F37C62959BDF9916EC1C5A"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="7">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="840.46875" top="229.80859375" width="181.64453125" height="197.546875"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="SalesPeople" uuid="BCB8EE6CB42044CBBBC0884B2710FAE1" id="8">
+		<field name="ID" uuid="62C074261EF646ADA834915F30D6A739" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="firstname" uuid="43669C20F0254E35A07A7F082FE03985" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="lastname" uuid="2C3EE9D4B36C40638135100F4BEDE5CC" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="email" uuid="D67D5DBE14D74B84A3169FBA8CD8B7BC" type="10" limiting_length="255" never_null="true" id="4"/>
+		<field name="marginThreshold" uuid="A3C99956D09C448797DC9BBD93EBEEE0" type="6" never_null="true" id="5"/>
+		<field name="docsPath" uuid="F3E074802F24412A821ECCE42B5AD5D8" type="10" limiting_length="255" never_null="true" id="6"/>
+		<field name="userId" uuid="B1B4AE08F79B49E1AD567711E8694E66" type="4" never_null="true" id="7"/>
+		<field name="photo" uuid="E582DD15E383449E82CB91E5F6061BDC" type="12" never_null="true" id="8"/>
+		<primary_key field_name="ID" field_uuid="62C074261EF646ADA834915F30D6A739"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="8">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="514.171875" top="14.72265625" width="202.28125" height="221.86328125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(Documents)" uuid="774B13CCD4C647A9ABFFF6F13C1FFC57" id="9" hide_in_REST="true">
+		<field name="ID" uuid="CB2DA10B321043BCBD3691D804C5CD0F" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<field_extra position="1"/>
+		</field>
+		<field name="info" uuid="91DB291F1C994E0EBFC4EAA52C4099DB" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="stamp" uuid="2D2FA3759E2843CA9DBA892693F9EEE5" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="userManualPath" uuid="BFB7C1C63BA047E580B3E34B65066A3B" type="10" limiting_length="255" never_null="true" id="4">
+			<field_extra position="5"/>
+		</field>
+		<primary_key field_name="ID" field_uuid="CB2DA10B321043BCBD3691D804C5CD0F"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="4">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="527.07421875" top="231" width="230.9921875" height="139.23046875"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(Invoices)" uuid="7B3C7300959F4E539898EC9194091553" id="10" hide_in_REST="true">
+		<field name="ID" uuid="8B41632E4EF24BDC81F18EC2E23CF279" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="amount" uuid="7EB70AB22B9C406EB17CF310CE36EDDE" type="6" never_null="true" id="2"/>
+		<field name="toDelete" uuid="4C1582806483442F95D7C65D1335CC79" type="1" never_null="true" id="3"/>
+		<primary_key field_name="ID" field_uuid="8B41632E4EF24BDC81F18EC2E23CF279"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="3">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="568" top="5" width="226" height="112.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(InvoicesLog)" uuid="271BB231286848D3A963DF7EFAF959F7" id="11" hide_in_REST="true">
+		<field name="ID" uuid="7AC165EFC33347349D9CC877643F9EA9" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="invoiceId" uuid="E59D115017624C4BB7F65E6C0963F779" type="4" never_null="true" id="2"/>
+		<field name="amount" uuid="FAF8B9A438434AD2ABDD1AF5FDA27CC2" type="6" never_null="true" id="3">
+			<field_extra multi_line="false"/>
+		</field>
+		<field name="event" uuid="40EBF74904C64CC68D3A912ADF51DCA4" type="10" limiting_length="255" never_null="true" id="4"/>
+		<field name="stamp" uuid="B1A7AF93093D466080F7EFEAF16B0E84" type="10" limiting_length="255" never_null="true" id="5"/>
+		<primary_key field_name="ID" field_uuid="7AC165EFC33347349D9CC877643F9EA9"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="844" top="9" width="159" height="171.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="(InvoicesInFailure)" uuid="5BE236852DAB41A5809D384ACA0F43CC" id="12" hide_in_REST="true">
+		<field name="ID" uuid="3FA9697ABBBC4F0EB2FBF5388EECDA8E" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="invoiceId" uuid="BE80FE2FF9934F3F967E361AA66754D4" type="4" never_null="true" id="2"/>
+		<field name="reason" uuid="0CF61D43F0C44F85A856E8F95E77D15F" type="10" limiting_length="255" never_null="true" id="3"/>
+		<field name="stamp" uuid="7CA8F65B2A3F4A498138DC6D634E621C" type="10" limiting_length="255" never_null="true" id="4">
+			<field_extra multi_line="false"/>
+		</field>
+		<primary_key field_name="ID" field_uuid="3FA9697ABBBC4F0EB2FBF5388EECDA8E"/>
+		<table_extra trashed="true">
+			<editor_table_info displayable_fields_count="7">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="799" top="210" width="206" height="189.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Users" uuid="9C026D71D5B24071B4D9162721267834" id="13">
+		<field name="ID" uuid="B4D1BB1ECA8643F2ACB3FD05297E6443" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="identifier" uuid="92E70B129BCF4D13B0416C557C0744E3" type="10" limiting_length="255" never_null="true" id="2"/>
+		<field name="password" uuid="9F5F69429B644B4C8E4A8D7175041E33" type="10" limiting_length="255" never_null="true" id="3"/>
+		<primary_key field_name="ID" field_uuid="B4D1BB1ECA8643F2ACB3FD05297E6443"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="7">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="932.890625" top="9.015625" width="189.3046875" height="191.7578125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<relation uuid="54D417A66E3643608171FF648BB4FC4A" name_Nto1="user" name_1toN="sales" state="1">
+		<related_field kind="source">
+			<field_ref uuid="B1B4AE08F79B49E1AD567711E8694E66" name="userId">
+				<table_ref uuid="BCB8EE6CB42044CBBBC0884B2710FAE1" name="SalesPeople"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="B4D1BB1ECA8643F2ACB3FD05297E6443" name="ID">
+				<table_ref uuid="9C026D71D5B24071B4D9162721267834" name="Users"/>
+			</field_ref>
+		</related_field>
+		<relation_extra>
+			<editor_relation_info>
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="F8D53171C77641F996216DBDAA4208C0" name_Nto1="salesPeople" name_1toN="products" state="1">
+		<related_field kind="source">
+			<field_ref uuid="B065C41F017349C4A0AE39879E15383F" name="salesId">
+				<table_ref uuid="0196CED8FB6276498730C34B6B2F4FC6" name="Products"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="62C074261EF646ADA834915F30D6A739" name="ID">
+				<table_ref uuid="BCB8EE6CB42044CBBBC0884B2710FAE1" name="SalesPeople"/>
+			</field_ref>
+		</related_field>
+		<relation_extra>
+			<editor_relation_info>
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<index kind="regular" unique_keys="true" uuid="0196CED8FB637F069890B1AE0FECA372" type="7">
+		<field_ref uuid="0196CED8FB637B89B95E89069AF04AB5" name="ID">
+			<table_ref uuid="0196CED8FB6276498730C34B6B2F4FC6" name="Products"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="0196D4892462786698A7A52680E674FF" type="7">
+		<field_ref uuid="0196D48924627516ADD36D6BB153D8C1" name="ID">
+			<table_ref uuid="0196D48924607245B969744503D4D957" name="(Addresses)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="0196D4951F89714FA0807668E9F9E179" type="7">
+		<field_ref uuid="0196D4951F887E9FBE089498F19A0C75" name="ID">
+			<table_ref uuid="0196D4951F867CD9A2B77A1552558D21" name="(MailLabel)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="0196D49AB798709B9CFB3B6ECB87B92A" type="7">
+		<field_ref uuid="0196D49AB7977D74A78DAB80BB9807DC" name="ID">
+			<table_ref uuid="0196D49AB7957DA5B03DA1389C3DE363" name="(People)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="0196D8B21B2279CEB93311E1910ED0B6" type="7">
+		<field_ref uuid="0196D8B21B22772FAC46DFF0E634BB11" name="ID">
+			<table_ref uuid="0196D8B21B21750E9F207D59EE17FCBF" name="(OrderLine)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="0196FC8878F37F858FC7FD0F8B075307" type="7">
+		<field_ref uuid="0196FC8878F37C62959BDF9916EC1C5A" name="ID">
+			<table_ref uuid="0196FC8878F27631857DFE59DBE2850E" name="(OrderLinesLogs)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="580322457C1747E9AEFBF7AC9EDEBCCD" type="7">
+		<field_ref uuid="B4D1BB1ECA8643F2ACB3FD05297E6443" name="ID">
+			<table_ref uuid="9C026D71D5B24071B4D9162721267834" name="Users"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="A991FBB68D924B45A09DF90D45E37760" type="7">
+		<field_ref uuid="3FA9697ABBBC4F0EB2FBF5388EECDA8E" name="ID">
+			<table_ref uuid="5BE236852DAB41A5809D384ACA0F43CC" name="(InvoicesInFailure)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="AD6E65666A6E4EED9A50E7C5DA8AB557" type="7">
+		<field_ref uuid="8B41632E4EF24BDC81F18EC2E23CF279" name="ID">
+			<table_ref uuid="7B3C7300959F4E539898EC9194091553" name="(Invoices)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="B17E3BF54450493DB72FBD48A5745784" type="7">
+		<field_ref uuid="C6DBB917EEE44AF9BDA57ABA22C55C6B" name="ID">
+			<table_ref uuid="107A367EBCC346259FD971E8FC1097DA" name="INFO"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="C5496D81C38C4383A0E74BBB980A9A9E" type="7">
+		<field_ref uuid="62C074261EF646ADA834915F30D6A739" name="ID">
+			<table_ref uuid="BCB8EE6CB42044CBBBC0884B2710FAE1" name="SalesPeople"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="CDFA8FA5485F44C0B1C274C3FB128EEE" type="7">
+		<field_ref uuid="7AC165EFC33347349D9CC877643F9EA9" name="ID">
+			<table_ref uuid="271BB231286848D3A963DF7EFAF959F7" name="(InvoicesLog)"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="E5158C10725E4372B9AD834834EA0C22" type="7">
+		<field_ref uuid="CB2DA10B321043BCBD3691D804C5CD0F" name="ID">
+			<table_ref uuid="774B13CCD4C647A9ABFFF6F13C1FFC57" name="(Documents)"/>
+		</field_ref>
+	</index>
+	<base_extra package_name="HDI_Template_v18" structure_file_name="HowDoI" data_file_path=":HowDoI.4DD">
+		<journal_file journal_file_enabled="false"/>
+	</base_extra>
+</base>

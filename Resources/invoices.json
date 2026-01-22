@@ -1,0 +1,14 @@
+[
+  {
+     "amount": 100,
+     "toDelete": false
+  },
+  {
+     "amount": 200,
+     "toDelete": false
+  },
+  {
+     "amount": 300,
+     "toDelete": false
+  }
+]

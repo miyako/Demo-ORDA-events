@@ -4,7 +4,7 @@ Class extends DataStoreImplementation
 exposed Function authentify($credentials : Object) : Boolean
 	
 	var $user : cs:C1710.UsersEntity
-	var $sale:=
+	var $sale : cs:C1710.SalesPeopleEntity
 	var $result:=False:C215
 	
 	//
@@ -28,7 +28,7 @@ exposed Function authentify($credentials : Object) : Boolean
 			$sale:=$user.sales.first()
 			
 			Use (Session:C1714.storage)
-				Session:C1714.storage.userInfo:=New shared object:C1526("salesId"; $sale.ID; "docsFolder"; $sale.docMap)
+				Session:C1714.storage.userInfo:=New shared object:C1526("salesId"; $sale.ID; "docsFolder"; $sale.docsPath; "marginThreshold"; $sale.marginThreshold)
 			End use 
 			
 			$result:=True:C214

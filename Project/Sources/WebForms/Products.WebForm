@@ -39,6 +39,13 @@
 				"namespace": "",
 				"dataType": "bool",
 				"initialValue": false
+			},
+			{
+				"id": "guidelines",
+				"type": "scalar",
+				"namespace": "",
+				"dataType": "string",
+				"initialValue": ""
 			}
 		],
 		"styles": [
@@ -165,23 +172,6 @@
 						"returns": {
 							"name": "result",
 							"type": "Variable"
-						}
-					},
-					{
-						"type": "method",
-						"dataclass": "Products",
-						"events": [
-							"oninit"
-						],
-						"id": "hP2cGM6tHDv5LYg3cQRMay",
-						"method": "ds.Products.init",
-						"params": [],
-						"datasource": "",
-						"allowedOnHTTPGET": false,
-						"returns": {
-							"name": "result",
-							"type": "cs.ProductsSelection",
-							"datasource": "products"
 						}
 					}
 				],
@@ -1158,6 +1148,7 @@
 			"hidden": false,
 			"nodes": [
 				"75VgDyFSLh",
+				"sSAGyElH1t",
 				"uHJgBJMzjK"
 			],
 			"linkedNodes": {}
@@ -1216,10 +1207,16 @@
 						"method": "newProduct.saveMe",
 						"params": [
 							{
-								"name": "openLog",
+								"name": "noSpaceOnDisk",
 								"type": "Boolean",
 								"datasource": "noSpaceOnDisk",
-								"id": "ppU3QcXGCb7B41kWwJsoea"
+								"id": "ovTjngk94Ut3sK68Lwuv2Q"
+							},
+							{
+								"name": "guidelines",
+								"type": "Text",
+								"datasource": "guidelines",
+								"id": "fEUJmctU29STFPGcEBaGsz"
 							}
 						],
 						"namespace": "",
@@ -1387,8 +1384,7 @@
 			"parent": "bNbseIHWZ0",
 			"hidden": false,
 			"nodes": [
-				"KnQu0x4y3n",
-				"uks0s-Uqcl"
+				"KnQu0x4y3n"
 			],
 			"linkedNodes": {}
 		},
@@ -1675,66 +1671,6 @@
 				"6-Er2ufJP2",
 				"uiMQC2IFXP"
 			],
-			"linkedNodes": {}
-		},
-		"uks0s-Uqcl": {
-			"type": {
-				"resolvedName": "Button"
-			},
-			"isCanvas": false,
-			"props": {
-				"text": "Initialize products",
-				"classNames": [],
-				"events": [
-					{
-						"type": "method",
-						"dataclass": "Products",
-						"events": [
-							"onclick"
-						],
-						"id": "c4gaVmDSC8t77YKwhSd9dT",
-						"method": "ds.Products.init",
-						"params": [],
-						"datasource": "",
-						"allowedOnHTTPGET": false,
-						"returns": {
-							"name": "result",
-							"type": "cs.ProductsSelection",
-							"datasource": "products"
-						}
-					}
-				],
-				"iconPosition": "hidden",
-				"style": {
-					"display": "flex",
-					"backgroundColor": "#226aa4",
-					"width": "fit-content"
-				}
-			},
-			"displayName": "Button",
-			"custom": {},
-			"parent": "2s6g9pWn8D",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {
-				"icon": "MpeG3M3hrN"
-			}
-		},
-		"MpeG3M3hrN": {
-			"type": {
-				"resolvedName": "Icon"
-			},
-			"isCanvas": false,
-			"props": {
-				"classNames": [],
-				"events": [],
-				"icon": "fa-regular fa-star"
-			},
-			"displayName": "Icon",
-			"custom": {},
-			"parent": "uks0s-Uqcl",
-			"hidden": false,
-			"nodes": [],
 			"linkedNodes": {}
 		},
 		"25zwcoJHjz": {
@@ -2075,6 +2011,104 @@
 			"displayName": "Input",
 			"custom": {},
 			"parent": "tHBOTFqveA",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"sSAGyElH1t": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"alignItems": "center",
+					"gap": "10px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "OtwjrPbvTa",
+			"hidden": false,
+			"nodes": [
+				"n0rq5OcvqP"
+			],
+			"linkedNodes": {}
+		},
+		"n0rq5OcvqP": {
+			"type": {
+				"resolvedName": "TextInput"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"placeholder": "placeholder",
+				"label": "label",
+				"labelPosition": "left",
+				"iterableChild": true,
+				"style": {}
+			},
+			"displayName": "Text Input",
+			"custom": {},
+			"parent": "sSAGyElH1t",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"label": "dlwAXJCdAu",
+				"input": "o0i3qFBYB-"
+			}
+		},
+		"dlwAXJCdAu": {
+			"type": {
+				"resolvedName": "Label"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Guidelines",
+				"classNames": [],
+				"events": [],
+				"moveable": false,
+				"deletable": true,
+				"style": {
+					"textAlign": "end"
+				}
+			},
+			"displayName": "Label",
+			"custom": {},
+			"parent": "n0rq5OcvqP",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"o0i3qFBYB-": {
+			"type": {
+				"resolvedName": "Input"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"deletable": false,
+				"className": "w-full bg-transparent",
+				"type": "textArea",
+				"moveable": false,
+				"placeholder": "Enter here the product guidelines",
+				"revealPassword": true,
+				"twentyFourHours": true,
+				"eyePosition": "right",
+				"datasource": "guidelines",
+				"intervals": [],
+				"style": {
+					"width": "500px"
+				},
+				"disabled": false,
+				"dataType": "string"
+			},
+			"displayName": "Input",
+			"custom": {},
+			"parent": "n0rq5OcvqP",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}

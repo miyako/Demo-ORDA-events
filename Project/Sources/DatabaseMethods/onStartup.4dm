@@ -9,4 +9,4 @@ Use (Storage:C1525)
 End use 
 
 
-ds:C1482.Products.init()
+//ds.Products.init()

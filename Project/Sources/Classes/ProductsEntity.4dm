@@ -6,7 +6,7 @@ Class extends Entity
 Class constructor()
 	This:C1470.name:="New product"
 	This:C1470.costPrice:=100
-	This:C1470.retailPrice:=110
+	This:C1470.retailPrice:=101
 	This:C1470.status:="OK"
 	
 	//
@@ -24,7 +24,7 @@ Function event touched name($event : Object)
 	// The document path is stored in the userManualPath attribute
 	// The file name depends on the product name
 	//
-	This:C1470.userManualPath:="/PACKAGE/Resources/Files"+/userManual_"+This.name"
+	This:C1470.userManualPath:="/PACKAGE/Files"+Session:C1714.storage.userInfo.docsFolder+"/userManual_"+This:C1470.name
 	
 	
 	//
@@ -36,9 +36,9 @@ Function event validateSave margin($event : Object) : Object
 	var $result : Object
 	
 	//The user can't create a product whose margin is < 50%
-	If (This:C1470.margin<50)
+	If (This:C1470.margin<Session:C1714.storage.userInfo.marginThreshold)
 		$result:={errCode: 1; message: "The validation of this product failed"; \
-			extraDescription: {info: "The margin of this product ("+String:C10(This:C1470.margin)+") is lower than 50%"}; seriousError: False:C215}
+			extraDescription: {info: "The margin of this product is "+String:C10(This:C1470.margin)+". You must achieve a "+String:C10(Session:C1714.storage.userInfo.marginThreshold)+" target margin"}; seriousError: False:C215}
 	End if 
 	
 	return $result
@@ -116,70 +116,12 @@ Function event afterSave($event : Object)
 		End use 
 	End if 
 	
-	// ------------------------------------------------
-	//
-	// DROP EVENTS
-	//
-	// validateDrop event at attribute level
-Function event validateDrop status($event : Object) : Object
-	
-	var $result : Object
-	
-	// Products must be marked as TO DELETE to be dropped
-	//
-	If (This:C1470.status#"TO DELETE")
-		$result:={errCode: 1; message: "You can't drop this product"; \
-			extraDescription: {info: "This product must be marked as To Delete"}; seriousError: False:C215}
-	End if 
-	
-	return $result
-	
-	
-	// dropping event at entity level
-Function event dropping($event : Object) : Object
-	
-	var $result : Object
-	var $userManualFile : 4D:C1709.File
-	
-	
-	$userManualFile:=File:C1566(This:C1470.userManualPath)
-	
-	// When dropping a product, its user manual document is also deleted on the disk
-	// This action may fail
-	//
-	Try
-		If (Storage:C1525.diskInfo.errorOnDropFile)
-			throw:C1805(1; "")
-		Else 
-			If ($userManualFile.exists)
-				$userManualFile.delete()
-			End if 
-		End if 
-	Catch
-		// Dropping the user manual document failed
-		$result:={errCode: 1; message: "Drop failed"; extraDescription: {info: "The user manual can't be dropped"}}
-	End try
-	
-	return $result
-	
-	
-	
-Function event afterDrop($event : Object)
-	
-	var $status : Object
-	
-	// The drop action failed - The product must be checked manually
-	//
-	If (($event.status.success=False:C215) && ($event.status.errors=Null:C1517))  // $event.status.errors is filled if the error comes from the validateDrop event
-		This:C1470.status:="Drop action failed"
-		$status:=This:C1470.save()
-	End if 
 	
 	// --------------------------------------------------------------
 	//
 	// For Qodly
 	//
-exposed Function saveMe($noSpaceOnDisk : Boolean) : Object
+exposed Function saveMe($noSpaceOnDisk : Boolean; $guidelines : Text) : Object
 	
 	var $status : Object
 	var $blob : Blob
@@ -192,7 +134,7 @@ exposed Function saveMe($noSpaceOnDisk : Boolean) : Object
 	
 	//The content of the user manual file is generated here
 	//
-	TEXT TO BLOB:C554("This is the "+This:C1470.name+" user manual"; $blob)
+	TEXT TO BLOB:C554($guidelines; $blob)
 	
 	
 	// The content of the user manual file is stored in a map
@@ -217,42 +159,7 @@ exposed Function saveMe($noSpaceOnDisk : Boolean) : Object
 	return $status
 	
 	
-exposed Function dropMe($errorOnDropFile : Boolean) : Object
-	
-	var $status : Object
-	
-	Use (Storage:C1525.diskInfo)
-		Storage:C1525.diskInfo.errorOnDropFile:=$errorOnDropFile
-	End use 
-	
-	Try
-		$status:=This:C1470.drop()
-	Catch
-		Web Form:C1735.setError($status.errors.first().message+" - "+$status.errors.first().extraDescription.info)
-		return $status
-	End try
-	
-	If ($status.errors#Null:C1517)
-		Web Form:C1735.setWarning($status.errors.first().message+" - "+$status.errors.first().extraDescription.info)
-	Else 
-		Web Form:C1735.setMessage("Congratulations! Your product has been dropped")
-	End if 
-	
-	return $status
-	
-exposed Function markAsDelete()
-	
-	var $status : Object
-	
-	This:C1470.status:="TO DELETE"
-	
-	$status:=This:C1470.save()
-	
-	Web Form:C1735.setMessage("You can now drop this product")
-	
-	
 exposed Function apply() : cs:C1710.ProductsEntity
 	return This:C1470
-	
 	
 	

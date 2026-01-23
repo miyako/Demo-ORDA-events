@@ -30,6 +30,19 @@
 				"type": "dataclass",
 				"read": [
 					"forDemo"
+				],
+				"create": [
+					"forDemo"
+				],
+				"execute": [
+					"forDemo"
+				]
+			},
+			{
+				"applyTo": "Products.apply",
+				"type": "method",
+				"execute": [
+					"forDemo"
 				]
 			},
 			{

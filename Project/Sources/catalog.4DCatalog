@@ -152,7 +152,7 @@
 		<field name="ID" uuid="62C074261EF646ADA834915F30D6A739" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
 		<field name="firstname" uuid="43669C20F0254E35A07A7F082FE03985" type="10" limiting_length="255" never_null="true" id="2"/>
 		<field name="lastname" uuid="2C3EE9D4B36C40638135100F4BEDE5CC" type="10" limiting_length="255" never_null="true" id="3"/>
-		<field name="email" uuid="D67D5DBE14D74B84A3169FBA8CD8B7BC" type="10" limiting_length="255" never_null="true" id="4"/>
+		<field name="adminEmail" uuid="D67D5DBE14D74B84A3169FBA8CD8B7BC" type="10" limiting_length="255" never_null="true" id="4"/>
 		<field name="marginThreshold" uuid="A3C99956D09C448797DC9BBD93EBEEE0" type="6" never_null="true" id="5"/>
 		<field name="docsPath" uuid="F3E074802F24412A821ECCE42B5AD5D8" type="10" limiting_length="255" never_null="true" id="6"/>
 		<field name="userId" uuid="B1B4AE08F79B49E1AD567711E8694E66" type="4" never_null="true" id="7"/>

@@ -24,7 +24,7 @@ Function event touched name($event : Object)
 	// The document path is stored in the guidelines attribute
 	// The file name depends on the product name
 	//
-	This:C1470.guidelinesFile:="/PACKAGE/Files"+Session:C1714.storage.userInfo.docsFolder+"/userManual_"+This:C1470.name
+	This:C1470.guidelinesFile:="/PACKAGE"+Session:C1714.storage.userInfo.docsFolder+"/guidelines_"+This:C1470.name
 	
 	
 	//
@@ -101,7 +101,7 @@ Function event afterSave($event : Object)
 			This:C1470.status:="Missing guidelines file"
 			
 			
-			cs:C1710.Utilities.me.sendMailAlert(ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId).email)
+			cs:C1710.Utilities.me.sendMailAlert(ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId).adminEmail)
 			
 		End if 
 		
@@ -144,7 +144,9 @@ exposed Function saveMe($noSpaceOnDisk : Boolean; $guidelines : Text) : Object
 	
 	If (Storage:C1525.docMap.query("name = :1"; This:C1470.name).length#0)
 		$docInfo:=Storage:C1525.docMap.query("name = :1"; This:C1470.name).first()
-		$docInfo.content:=$blob
+		Use ($docInfo)
+			$docInfo.content:=$blob
+		End use 
 	Else 
 		Use (Storage:C1525.docMap)
 			Storage:C1525.docMap.push(New shared object:C1526("name"; This:C1470.name; "content"; $blob))

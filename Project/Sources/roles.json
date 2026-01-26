@@ -46,6 +46,13 @@
 				]
 			},
 			{
+				"applyTo": "Token",
+				"type": "dataclass",
+				"read": [
+					"forDemo"
+				]
+			},
+			{
 				"applyTo": "Users",
 				"type": "dataclass",
 				"read": [

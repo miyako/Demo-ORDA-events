@@ -21,10 +21,10 @@ exposed Function get margin() : Real
 Function event touched name($event : Object)
 	
 	// The user manual document file will be stored on disk if the product is saved
-	// The document path is stored in the userManualPath attribute
+	// The document path is stored in the guidelines attribute
 	// The file name depends on the product name
 	//
-	This:C1470.userManualPath:="/PACKAGE/Files"+Session:C1714.storage.userInfo.docsFolder+"/userManual_"+This:C1470.name
+	This:C1470.guidelinesFile:="/PACKAGE/Files"+Session:C1714.storage.userInfo.docsFolder+"/userManual_"+This:C1470.name
 	
 	
 	//
@@ -38,21 +38,21 @@ Function event validateSave margin($event : Object) : Object
 	//The user can't create a product whose margin is < 50%
 	If (This:C1470.margin<Session:C1714.storage.userInfo.marginThreshold)
 		$result:={errCode: 1; message: "The validation of this product failed"; \
-			extraDescription: {info: "The margin of this product is "+String:C10(This:C1470.margin)+". You must achieve a "+String:C10(Session:C1714.storage.userInfo.marginThreshold)+" target margin"}; seriousError: False:C215}
+			extraDescription: {info: "The current margin of this product is "+String:C10(This:C1470.margin)+". You must achieve a "+String:C10(Session:C1714.storage.userInfo.marginThreshold)+" target margin"}; seriousError: False:C215}
 	End if 
 	
 	return $result
 	
 	
 	// saving event at attribute level
-Function event saving userManualPath($event : Object) : Object
+Function event saving guidelinesFile($event : Object) : Object
 	
 	var $result; $docInfo : Object
 	var $userManualFile : 4D:C1709.File
 	
 	
-	If (This:C1470.userManualPath#"")
-		$userManualFile:=File:C1566(This:C1470.userManualPath)
+	If (This:C1470.guidelinesFile#"")
+		$userManualFile:=File:C1566(This:C1470.guidelinesFile)
 		
 		If ($userManualFile.exists)
 			$userManualFile.delete()
@@ -79,7 +79,7 @@ Function event saving userManualPath($event : Object) : Object
 			End if 
 		Catch
 			// E.g.: No more space on disk
-			$result:={errCode: 1; message: "Error during the save action for this product"; extraDescription: {info: "There is no available space on disk to store the user manual"}}
+			$result:={errCode: 1; message: "Error during the save action for this product"; extraDescription: {info: "There is no available space on disk to store the guidelines file"}}
 		End try
 	End if 
 	
@@ -93,12 +93,16 @@ Function event afterSave($event : Object)
 	
 	If (($event.status.success=False:C215) && ($event.status.errors=Null:C1517))  // $event.status.errors is filled if the error comes from the validateSave event
 		
-		// The userManualPath attribute has not been properly saved
+		// The guidelines attribute has not been properly saved
 		// Its value is reset and the status attribute is set to "KO"
 		//
-		If ($event.savedAttributes.indexOf("userManualPath")=-1)
-			This:C1470.userManualPath:=""
-			This:C1470.status:="KO"
+		If ($event.savedAttributes.indexOf("guidelines")=-1)
+			This:C1470.guidelinesFile:=""
+			This:C1470.status:="Missing guidelines file"
+			
+			
+			cs:C1710.Utilities.me.sendMailAlert(ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId).email)
+			
 		End if 
 		
 	End if 
@@ -131,28 +135,37 @@ exposed Function saveMe($noSpaceOnDisk : Boolean; $guidelines : Text) : Object
 		Storage:C1525.diskInfo.noSpaceOnDisk:=$noSpaceOnDisk
 	End use 
 	
-	
 	//The content of the user manual file is generated here
 	//
 	TEXT TO BLOB:C554($guidelines; $blob)
 	
-	
 	// The content of the user manual file is stored in a map
 	//
-	Use (Storage:C1525.docMap)
-		Storage:C1525.docMap.push(New shared object:C1526("name"; This:C1470.name; "content"; $blob))
-	End use 
+	
+	If (Storage:C1525.docMap.query("name = :1"; This:C1470.name).length#0)
+		$docInfo:=Storage:C1525.docMap.query("name = :1"; This:C1470.name).first()
+		$docInfo.content:=$blob
+	Else 
+		Use (Storage:C1525.docMap)
+			Storage:C1525.docMap.push(New shared object:C1526("name"; This:C1470.name; "content"; $blob))
+		End use 
+	End if 
+	
+	//This.status:="OK"
 	
 	Try
 		$status:=This:C1470.save()
 	Catch
-		Web Form:C1735.setError($status.errors.first().message+" - "+$status.errors.first().extraDescription.info)
+		$status.creationInProgress:=True:C214
+		Web Form:C1735.setError($status.errors.first().extraDescription.info)
 		return $status
 	End try
 	
 	If ($status.errors#Null:C1517)
-		Web Form:C1735.setWarning($status.errors.first().message+" - "+$status.errors.first().extraDescription.info)
+		$status.creationInProgress:=True:C214
+		Web Form:C1735.setWarning($status.errors.first().extraDescription.info)
 	Else 
+		$status.creationInProgress:=False:C215
 		Web Form:C1735.setMessage("Congratulations! Your product has been created")
 	End if 
 	

@@ -34,18 +34,18 @@
 				"initialValue": false
 			},
 			{
-				"id": "noSpaceOnDisk",
-				"type": "scalar",
-				"namespace": "",
-				"dataType": "bool",
-				"initialValue": false
-			},
-			{
 				"id": "guidelines",
 				"type": "scalar",
 				"namespace": "",
 				"dataType": "string",
 				"initialValue": ""
+			},
+			{
+				"id": "noSpaceOnDisk",
+				"type": "scalar",
+				"namespace": "",
+				"dataType": "bool",
+				"initialValue": false
 			}
 		],
 		"styles": [
@@ -99,12 +99,32 @@
 							"id": "5ynWHHzbjTc4b1g26QsUJp",
 							"type": "datasource",
 							"name": "condition",
-							"value": "4",
+							"value": false,
 							"valueType": "hardCoded",
-							"path": "status.status",
+							"path": "status.success",
 							"dsType": "object",
 							"op": "eq",
-							"dataType": "number"
+							"dataType": "boolean"
+						},
+						{
+							"id": "agpcLuKp6gxzdhWtpBacib",
+							"type": "datasource",
+							"name": "condition",
+							"value": "",
+							"valueType": "hardCoded",
+							"path": "creationInProgress",
+							"dsType": "bool",
+							"op": "istrue"
+						},
+						{
+							"id": "5EzRzhaSbAFsM8X59tjkM6",
+							"type": "datasource",
+							"name": "condition",
+							"value": "",
+							"valueType": "hardCoded",
+							"path": "newProduct.guidelines",
+							"dsType": "string",
+							"op": "neq"
 						}
 					]
 				}
@@ -137,6 +157,68 @@
 							"dsType": "object",
 							"op": "eq",
 							"dataType": "boolean"
+						},
+						{
+							"id": "7txfBemwkCfEPvL1vsN8Ts",
+							"type": "datasource",
+							"name": "condition",
+							"value": "",
+							"valueType": "hardCoded",
+							"path": "creationInProgress",
+							"dsType": "bool",
+							"op": "isfalse"
+						}
+					]
+				}
+			},
+			{
+				"label": "GuideLinesCreationFailed",
+				"id": "v9sZBPf1J1wvwVT6aaqUUf",
+				"conditions": {
+					"id": "rm1Gpb75ogNsj63kGFCfWA",
+					"type": "combination",
+					"op": "and",
+					"conditions": [
+						{
+							"id": "qkxkoRUAhw2fLHQYkZaUUQ",
+							"type": "datasource",
+							"name": "condition",
+							"value": "",
+							"valueType": "hardCoded",
+							"path": "status",
+							"dsType": "object",
+							"op": "notnull"
+						},
+						{
+							"id": "xh4PEvAJxVsxCJHosYQT8w",
+							"type": "datasource",
+							"name": "condition",
+							"value": false,
+							"valueType": "hardCoded",
+							"path": "status.success",
+							"dsType": "object",
+							"op": "eq",
+							"dataType": "boolean"
+						},
+						{
+							"id": "aZTR4bSLquGb2FqwWNFM5i",
+							"type": "datasource",
+							"name": "condition",
+							"value": "",
+							"valueType": "hardCoded",
+							"path": "creationInProgress",
+							"dsType": "bool",
+							"op": "istrue"
+						},
+						{
+							"id": "xtWW1AyybDcLvKGVUw91Y2",
+							"type": "datasource",
+							"name": "condition",
+							"value": "Missing guidelines file",
+							"valueType": "hardCoded",
+							"path": "newProduct.status",
+							"dsType": "string",
+							"op": "eq"
 						}
 					]
 				}
@@ -147,7 +229,8 @@
 			"uqQE1WkJRPonSg677NvYit",
 			"gr5Sv3dBBJSzcEeKPtW1tX",
 			"et4bJXgMeoCwikZR276c7p"
-		]
+		],
+		"currentState": "root"
 	},
 	"components": {
 		"ROOT": {
@@ -776,11 +859,31 @@
 				"events": [
 					{
 						"type": "simple-action",
-						"id": "5NzrFWNEMawcwV9nBnKkqp",
+						"id": "qhPJiUye1h861nBq7UG5KP",
 						"events": [
 							"onclick"
 						],
 						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "noSpaceOnDisk",
+							"type": "scalar",
+							"from": "",
+							"dataType": "bool",
+							"namespace": "",
+							"set": {
+								"value": "false",
+								"type": "bool"
+							}
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "5NzrFWNEMawcwV9nBnKkqp",
+						"events": [
+							"onclick"
+						],
+						"action": "reset",
 						"actionType": "datasource",
 						"datasource": {
 							"name": "status",
@@ -813,6 +916,22 @@
 							}
 						},
 						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "oVDjrGjL9RBfDkJbwiAh1C",
+						"events": [
+							"onclick"
+						],
+						"action": "reset",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "guidelines",
+							"type": "scalar",
+							"from": "",
+							"dataType": "string",
+							"namespace": ""
+						}
 					},
 					{
 						"type": "method",
@@ -1142,6 +1261,11 @@
 					"style": {
 						"display": "flex"
 					}
+				},
+				"states:1tvZ5rVkqS1P2dTPhXxquR": {
+					"style": {
+						"display": "none"
+					}
 				}
 			},
 			"parent": "5uS2aSrdfz",
@@ -1165,7 +1289,8 @@
 					"display": "flex",
 					"justifyContent": "center",
 					"paddingTop": "0px",
-					"paddingBottom": "0px"
+					"paddingBottom": "0px",
+					"gap": "20px"
 				}
 			},
 			"displayName": "Stylebox",
@@ -1179,12 +1304,19 @@
 					"style": {
 						"display": "flex"
 					}
+				},
+				"states:sT5fMbcqRFkYAhz84JJdwm": {
+					"style": {
+						"display": "flex"
+					}
 				}
 			},
 			"parent": "5uS2aSrdfz",
 			"hidden": false,
 			"nodes": [
-				"Br496WQoQ1"
+				"Br496WQoQ1",
+				"gFILOzHXyI",
+				"fbi8Iw6bR2"
 			],
 			"linkedNodes": {}
 		},
@@ -1230,6 +1362,29 @@
 					},
 					{
 						"type": "simple-action",
+						"id": "iwTuQTGYBzUxMo3dXvtbbz",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "status.creationInProgress",
+							"type": "unknown",
+							"dataType": "object",
+							"namespace": "",
+							"target": "creationInProgress",
+							"targetNamespace": "",
+							"targetType": "bool",
+							"from": "",
+							"set": {
+								"value": "c}",
+								"type": "object"
+							}
+						}
+					},
+					{
+						"type": "simple-action",
 						"id": "sz1JV6w45rFZQXasXQsgYj",
 						"events": [
 							"onclick"
@@ -1255,10 +1410,15 @@
 			"custom": {
 				"states:sT5fMbcqRFkYAhz84JJdwm": {
 					"style": {
-						"display": "none"
+						"display": "block"
 					}
 				},
 				"states:1tvZ5rVkqS1P2dTPhXxquR": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:v9sZBPf1J1wvwVT6aaqUUf": {
 					"style": {
 						"display": "none"
 					}
@@ -1312,6 +1472,11 @@
 				"states:9WxG3orExHfXdUJarGNt6V": {
 					"style": {
 						"display": "flex"
+					}
+				},
+				"states:1tvZ5rVkqS1P2dTPhXxquR": {
+					"style": {
+						"display": "none"
 					}
 				}
 			},
@@ -1664,7 +1829,13 @@
 				}
 			},
 			"displayName": "Stylebox",
-			"custom": {},
+			"custom": {
+				"states:1tvZ5rVkqS1P2dTPhXxquR": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
 			"parent": "OtwjrPbvTa",
 			"hidden": false,
 			"nodes": [
@@ -1681,7 +1852,7 @@
 			"props": {
 				"events": [],
 				"id": "text",
-				"datasource": "$This.userManualPath",
+				"datasource": "$This.guidelinesFile",
 				"doc": [
 					{
 						"type": "paragraph",
@@ -1691,7 +1862,7 @@
 							},
 							{
 								"type": "datasource",
-								"datasource": "$This.userManualPath",
+								"datasource": "$This.guidelinesFile",
 								"children": [
 									{
 										"text": "userManualPath"
@@ -1719,7 +1890,9 @@
 						"width": "200px"
 					}
 				},
-				"__t": {}
+				"__t": {
+					"doc": []
+				}
 			},
 			"parent": "blShVqIgRt",
 			"hidden": false,
@@ -1791,7 +1964,7 @@
 						"type": "paragraph",
 						"children": [
 							{
-								"text": "User manual path",
+								"text": "Guidelines file",
 								"bold": false,
 								"italic": false,
 								"underlined": false,
@@ -1814,7 +1987,9 @@
 			},
 			"displayName": "Text",
 			"custom": {
-				"__t": {}
+				"__t": {
+					"doc": []
+				}
 			},
 			"parent": "bdqf7gIrZe",
 			"hidden": false,
@@ -1892,7 +2067,7 @@
 			},
 			"isCanvas": false,
 			"props": {
-				"text": "User manual path",
+				"text": "Guidelines file",
 				"classNames": [],
 				"events": [],
 				"moveable": false,
@@ -1923,7 +2098,7 @@
 				"revealPassword": true,
 				"twentyFourHours": true,
 				"eyePosition": "right",
-				"datasource": "newProduct.userManualPath",
+				"datasource": "newProduct.guidelinesFile",
 				"intervals": [],
 				"style": {
 					"width": "500px"
@@ -2030,7 +2205,13 @@
 				}
 			},
 			"displayName": "Stylebox",
-			"custom": {},
+			"custom": {
+				"states:1tvZ5rVkqS1P2dTPhXxquR": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
 			"parent": "OtwjrPbvTa",
 			"hidden": false,
 			"nodes": [
@@ -2109,6 +2290,225 @@
 			"displayName": "Input",
 			"custom": {},
 			"parent": "n0rq5OcvqP",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"gFILOzHXyI": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Cancel",
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "vYueXh4dXRyBbtwwbjNqnv",
+						"events": [
+							"onclick"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "creationInProgress",
+							"type": "scalar",
+							"from": "",
+							"dataType": "bool",
+							"namespace": "",
+							"set": {
+								"value": "false",
+								"type": "bool"
+							}
+						}
+					}
+				],
+				"iconPosition": "hidden",
+				"style": {
+					"display": "flex",
+					"backgroundColor": "#226aa4"
+				}
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:sT5fMbcqRFkYAhz84JJdwm": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:1tvZ5rVkqS1P2dTPhXxquR": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:9WxG3orExHfXdUJarGNt6V": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:v9sZBPf1J1wvwVT6aaqUUf": {
+					"style": {
+						"display": "flex"
+					}
+				}
+			},
+			"parent": "7G01WFvZQ-",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "8USU3RpHnx"
+			}
+		},
+		"8USU3RpHnx": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-star"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "gFILOzHXyI",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"fbi8Iw6bR2": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Save without guidelines",
+				"classNames": [],
+				"events": [
+					{
+						"type": "method",
+						"dataclass": "ProductsEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "uQqBdUD7Z5FpASWAxm1uQp",
+						"method": "newProduct.saveMe",
+						"params": [
+							{
+								"name": "noSpaceOnDisk",
+								"type": "Boolean",
+								"datasource": "noSpaceOnDisk",
+								"id": "ovTjngk94Ut3sK68Lwuv2Q"
+							},
+							{
+								"name": "guidelines",
+								"type": "Text",
+								"datasource": "guidelines",
+								"id": "fEUJmctU29STFPGcEBaGsz",
+								"isHardCoded": true,
+								"hardCodedType": "string",
+								"hardCodedValue": ""
+							}
+						],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Object",
+							"datasource": "status"
+						},
+						"feedback": true
+					},
+					{
+						"type": "simple-action",
+						"id": "iwTuQTGYBzUxMo3dXvtbbz",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "status.creationInProgress",
+							"type": "unknown",
+							"dataType": "object",
+							"namespace": "",
+							"target": "creationInProgress",
+							"targetNamespace": "",
+							"targetType": "bool",
+							"from": "",
+							"set": {
+								"value": "c}",
+								"type": "object"
+							}
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "sz1JV6w45rFZQXasXQsgYj",
+						"events": [
+							"onclick"
+						],
+						"action": "all",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "products",
+							"type": "entitysel",
+							"from": "",
+							"namespace": ""
+						},
+						"state": {}
+					}
+				],
+				"iconPosition": "hidden",
+				"style": {
+					"display": "flex",
+					"backgroundColor": "#226aa4"
+				}
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:sT5fMbcqRFkYAhz84JJdwm": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:1tvZ5rVkqS1P2dTPhXxquR": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:9WxG3orExHfXdUJarGNt6V": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:v9sZBPf1J1wvwVT6aaqUUf": {
+					"style": {
+						"display": "flex"
+					}
+				}
+			},
+			"parent": "7G01WFvZQ-",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "7onOjoGKPM"
+			}
+		},
+		"7onOjoGKPM": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-star"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "fbi8Iw6bR2",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}

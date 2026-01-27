@@ -455,7 +455,7 @@
 				"style": {
 					"display": "flex",
 					"justifyContent": "space-between",
-					"alignItems": "center"
+					"alignItems": "start"
 				},
 				"classNames": [
 					"cartStyleRow"
@@ -722,7 +722,8 @@
 			"hidden": false,
 			"nodes": [
 				"ZDazaDLFEm",
-				"JpesGOIQmN"
+				"JpesGOIQmN",
+				"mzLlP5b4K1"
 			],
 			"linkedNodes": {}
 		},
@@ -904,6 +905,87 @@
 				}
 			},
 			"parent": "JpesGOIQmN",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"mzLlP5b4K1": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"alignItems": "center",
+					"gap": "20px",
+					"paddingLeft": "0px",
+					"fontSize": "18px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "yFhYGhhaMJ",
+			"hidden": false,
+			"nodes": [
+				"kKpf0wmYqH"
+			],
+			"linkedNodes": {}
+		},
+		"kKpf0wmYqH": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "My documents folder: ",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							},
+							{
+								"type": "datasource",
+								"datasource": "whoAreYou.docsPath",
+								"children": [
+									{
+										"bold": true,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false,
+										"text": "XXXX"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "whoAreYou.docsPath",
+				"style": {
+					"color": "#226aa4"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"__t": {
+					"doc": []
+				}
+			},
+			"parent": "mzLlP5b4K1",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}

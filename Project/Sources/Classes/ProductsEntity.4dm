@@ -24,7 +24,7 @@ Function event touched name($event : Object)
 	// The document path is stored in the guidelines attribute
 	// The file name depends on the product name
 	//
-	This:C1470.guidelinesFile:="/PACKAGE"+Session:C1714.storage.userInfo.docsFolder+"/guidelines_"+This:C1470.name
+	This:C1470.guidelinesFile:=Session:C1714.storage.userInfo.docsFolder+"/guidelines_"+This:C1470.name
 	
 	
 	//
@@ -52,7 +52,7 @@ Function event saving guidelinesFile($event : Object) : Object
 	
 	
 	If (This:C1470.guidelinesFile#"")
-		$userManualFile:=File:C1566(This:C1470.guidelinesFile)
+		$userManualFile:=File:C1566("/PACKAGE"+This:C1470.guidelinesFile)
 		
 		If ($userManualFile.exists)
 			$userManualFile.delete()
@@ -91,6 +91,10 @@ Function event afterSave($event : Object)
 	var $docIndexes : Collection
 	var $index : Integer
 	
+	If ($event.status.errors#Null:C1517)
+		This:C1470.status:="KO"
+	End if 
+	
 	If (($event.status.success=False:C215) && ($event.status.errors=Null:C1517))  // $event.status.errors is filled if the error comes from the validateSave event
 		
 		// The guidelines attribute has not been properly saved
@@ -127,7 +131,7 @@ Function event afterSave($event : Object)
 	//
 exposed Function saveMe($noSpaceOnDisk : Boolean; $guidelines : Text) : Object
 	
-	var $status : Object
+	var $status; $docInfo : Object
 	var $blob : Blob
 	
 	

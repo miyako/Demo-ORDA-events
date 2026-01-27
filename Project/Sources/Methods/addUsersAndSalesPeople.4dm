@@ -10,6 +10,16 @@ var $myFile : 4D:C1709.File
 var $myPhoto : Picture
 
 
+//$user:=ds.Users.get(1)
+//$user.identifier:="Ann"
+//$status:=$user.save()
+
+//$sale:=ds.SalesPeople.get(1)
+//$sale.firstname:="Ann"
+//$sale.lastname:="Wilson"
+//$sale.docsPath:="/docsForAnn"
+//$status:=$sale.save()
+
 //$sale:=ds.SalesPeople.get(2)
 //$sale.adminEmail:="qodlyUser@gmail.com"
 //$status:=$sale.save()

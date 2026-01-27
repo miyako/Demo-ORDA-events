@@ -8,7 +8,7 @@
 				"namespace": "",
 				"dataType": "object",
 				"initialValue": {
-					"identifier": "mary",
+					"identifier": "ann",
 					"password": "a"
 				}
 			}

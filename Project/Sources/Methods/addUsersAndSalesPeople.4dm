@@ -10,6 +10,10 @@ var $myFile : 4D:C1709.File
 var $myPhoto : Picture
 
 
+//$sale:=ds.SalesPeople.get(2)
+//$sale.adminEmail:="qodlyUser@gmail.com"
+//$status:=$sale.save()
+
 $femalePhotoFiles:=Folder:C1567("/RESOURCES/femalefaces/").files()
 $malePhotoFiles:=Folder:C1567("/RESOURCES/malefaces/").files()
 

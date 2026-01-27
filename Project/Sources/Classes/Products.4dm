@@ -13,14 +13,7 @@ exposed Function init() : cs:C1710.ProductsSelection
 	var $blob : Blob
 	
 	
-	Use (Storage:C1525)
-		Storage:C1525.diskInfo:=New shared object:C1526("noSpaceOnDisk"; False:C215; "errorOnDropFile"; False:C215)
-	End use 
 	
-	For each ($product; ds:C1482.Products.all())
-		$product.status:="TO DELETE"
-		$status:=$product.save()
-	End for each 
 	
 	$notDropped:=This:C1470.all().drop()
 	

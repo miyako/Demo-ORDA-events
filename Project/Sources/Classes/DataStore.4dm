@@ -28,7 +28,7 @@ exposed Function authentify($credentials : Object) : Boolean
 			$sale:=$user.sales.first()
 			
 			Use (Session:C1714.storage)
-				Session:C1714.storage.userInfo:=New shared object:C1526("salesId"; $sale.ID; "docsFolder"; $sale.docsPath; "marginThreshold"; $sale.marginThreshold)
+				Session:C1714.storage.userInfo:=New shared object:C1526("salesId"; $sale.ID; "docsFolder"; $sale.docsPath; "marginThreshold"; $sale.marginThreshold; "adminEmail"; $sale.adminEmail)
 			End use 
 			
 			$result:=True:C214

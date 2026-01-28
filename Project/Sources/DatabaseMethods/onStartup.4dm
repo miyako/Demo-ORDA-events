@@ -1,5 +1,7 @@
 
 
+var $notDropped : cs:C1710.ProductsSelection
+
 
 //00_Start
 

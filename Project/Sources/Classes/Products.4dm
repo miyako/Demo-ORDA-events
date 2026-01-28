@@ -2,35 +2,52 @@ Class extends DataClass
 
 
 
-
-exposed Function init() : cs:C1710.ProductsSelection
+Function event restrict() : cs:C1710.ProductsSelection
 	
-	var $productsFile : 4D:C1709.File
-	var $productsColl : Collection
-	var $products; $notDropped : cs:C1710.ProductsSelection
-	var $product : cs:C1710.ProductsEntity
-	var $status : Object
-	var $blob : Blob
+	var $result : cs:C1710.ProductsSelection
 	
 	
+	If (Session:C1714#Null:C1517)
+		
+		If (Session:C1714.hasPrivilege("WebAdmin"))
+			$result:=Null:C1517
+		Else 
+			$result:=ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId).products
+		End if 
+		
+	End if 
+	
+	return $result
 	
 	
-	$notDropped:=This:C1470.all().drop()
+	//exposed Function init() : cs.ProductsSelection
 	
-	$productsFile:=File:C1566("/PACKAGE/Resources/products.json")
-	$productsColl:=JSON Parse:C1218($productsFile.getText())
+	//var $productsFile : 4D.File
+	//var $productsColl : Collection
+	//var $products; $notDropped : cs.ProductsSelection
+	//var $product : cs.ProductsEntity
+	//var $status : Object
+	//var $blob : Blob
 	
 	
-	Use (Storage:C1525.docMap)
-		For each ($product; $productsColl)
-			TEXT TO BLOB:C554("This is the "+$product.name+" user manual"; $blob)
-			Storage:C1525.docMap.push(New shared object:C1526("name"; $product.name; "content"; $blob))
-		End for each 
-	End use 
 	
-	$products:=This:C1470.fromCollection($productsColl)
 	
-	return $products
+	//$notDropped:=This.all().drop()
+	
+	//$productsFile:=File("/PACKAGE/Resources/products.json")
+	//$productsColl:=JSON Parse($productsFile.getText())
+	
+	
+	//Use (Storage.docMap)
+	//For each ($product; $productsColl)
+	//TEXT TO BLOB("This is the "+$product.name+" user manual"; $blob)
+	//Storage.docMap.push(New shared object("name"; $product.name; "content"; $blob))
+	//End for each 
+	//End use 
+	
+	//$products:=This.fromCollection($productsColl)
+	
+	//return $products
 	
 	// ---------------------------------------------
 	//

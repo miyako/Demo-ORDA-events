@@ -39,11 +39,15 @@
 		<field name="costPrice" uuid="0196CED979357FCEB8C3AD332BEE9316" type="6" never_null="true" id="5">
 			<field_extra position="4"/>
 		</field>
-		<field name="status" uuid="F6FAD3FE206140189D9566CBCD0E330E" type="10" limiting_length="255" never_null="true" id="6"/>
-		<field name="salesId" uuid="B065C41F017349C4A0AE39879E15383F" type="4" never_null="true" id="7"/>
+		<field name="status" uuid="F6FAD3FE206140189D9566CBCD0E330E" type="10" limiting_length="255" never_null="true" id="6">
+			<field_extra position="6"/>
+		</field>
+		<field name="salesId" uuid="B065C41F017349C4A0AE39879E15383F" type="4" never_null="true" id="7">
+			<field_extra position="7"/>
+		</field>
 		<primary_key field_name="ID" field_uuid="0196CED8FB637B89B95E89069AF04AB5"/>
 		<table_extra>
-			<editor_table_info displayable_fields_count="8">
+			<editor_table_info fields_ordering="2" displayable_fields_count="8">
 				<color red="255" green="255" blue="255" alpha="0"/>
 				<coordinates left="167.08203125" top="2.58203125" width="224.2109375" height="222.13671875"/>
 			</editor_table_info>
@@ -265,7 +269,7 @@
 			</editor_relation_info>
 		</relation_extra>
 	</relation>
-	<relation uuid="F8D53171C77641F996216DBDAA4208C0" name_Nto1="salesPeople" name_1toN="products" state="1">
+	<relation uuid="F8D53171C77641F996216DBDAA4208C0" name_Nto1="createdBy" name_1toN="products" state="1">
 		<related_field kind="source">
 			<field_ref uuid="B065C41F017349C4A0AE39879E15383F" name="salesId">
 				<table_ref uuid="0196CED8FB6276498730C34B6B2F4FC6" name="Products"/>

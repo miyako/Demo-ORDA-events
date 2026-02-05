@@ -12,7 +12,9 @@ Function event restrict() : cs:C1710.ProductsSelection
 		If (Session:C1714.hasPrivilege("WebAdmin"))
 			$result:=Null:C1517
 		Else 
-			$result:=ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId).products
+			If (Session:C1714.storage.userInfo.salesId#Null:C1517)
+				$result:=ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId).products
+			End if 
 		End if 
 		
 	End if 
@@ -20,34 +22,34 @@ Function event restrict() : cs:C1710.ProductsSelection
 	return $result
 	
 	
-	//exposed Function init() : cs.ProductsSelection
+exposed Function init() : cs:C1710.ProductsSelection
 	
-	//var $productsFile : 4D.File
-	//var $productsColl : Collection
-	//var $products; $notDropped : cs.ProductsSelection
-	//var $product : cs.ProductsEntity
-	//var $status : Object
-	//var $blob : Blob
-	
+	var $productsFile : 4D:C1709.File
+	var $productsColl : Collection
+	var $products; $notDropped : cs:C1710.ProductsSelection
+	var $product : Object
+	var $blob : Blob
 	
 	
+	$notDropped:=This:C1470.all().drop()
 	
-	//$notDropped:=This.all().drop()
+	$productsFile:=File:C1566("/PACKAGE/Resources/products.json")
+	$productsColl:=JSON Parse:C1218($productsFile.getText())
 	
-	//$productsFile:=File("/PACKAGE/Resources/products.json")
-	//$productsColl:=JSON Parse($productsFile.getText())
+	Use (Storage:C1525)
+		Storage:C1525.docMap:=New shared collection:C1527()
+	End use 
 	
+	Use (Storage:C1525.docMap)
+		For each ($product; $productsColl)
+			TEXT TO BLOB:C554("These are the "+$product.name+" product guidelines"; $blob)
+			Storage:C1525.docMap.push(New shared object:C1526("name"; $product.name; "salesId"; ds:C1482.SalesPeople.all().first().ID; "content"; $blob))
+		End for each 
+	End use 
 	
-	//Use (Storage.docMap)
-	//For each ($product; $productsColl)
-	//TEXT TO BLOB("This is the "+$product.name+" user manual"; $blob)
-	//Storage.docMap.push(New shared object("name"; $product.name; "content"; $blob))
-	//End for each 
-	//End use 
+	$products:=This:C1470.fromCollection($productsColl)
 	
-	//$products:=This.fromCollection($productsColl)
-	
-	//return $products
+	return $products
 	
 	// ---------------------------------------------
 	//

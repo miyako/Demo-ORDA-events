@@ -11,4 +11,13 @@ Use (Storage:C1525)
 End use 
 
 
-$notDropped:=ds:C1482.Products.all().drop()
+ds:C1482.authentify({identifier: "Ann"; password: "a"})
+
+//$sale:=ds.SalesPeople.all().first()
+
+//Use (Session.storage)
+//Session.storage.userInfo:=New shared object("salesId"; $sale.ID; "docsFolder"; $sale.docsPath; "marginThreshold"; $sale.marginThreshold; "adminEmail"; $sale.adminEmail)
+//End use 
+
+
+$notDropped:=ds:C1482.Products.init()

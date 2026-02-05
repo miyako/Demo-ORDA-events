@@ -14,7 +14,7 @@
 				"type": "scalar",
 				"namespace": "",
 				"dataType": "string",
-				"initialValue": "Home"
+				"initialValue": "Products"
 			}
 		],
 		"styles": [
@@ -35,50 +35,12 @@
 			{
 				"label": "Base",
 				"id": "root"
-			},
-			{
-				"label": "NotAuthenticated",
-				"id": "jVbjQrqYHMcofkxSoxU6iw",
-				"conditions": {
-					"id": "7HDZHRi6Q5NYnThBYTm6b3",
-					"type": "privilege",
-					"name": "condition",
-					"value": "",
-					"valueType": "hardCoded",
-					"op": "hasnopriv"
-				}
-			},
-			{
-				"label": "Authenticated",
-				"id": "kgZir93k9gbTgrSHeXkMFG",
-				"conditions": {
-					"id": "2n1RvYpkqQGVgT2o66iy1S",
-					"type": "privilege",
-					"name": "condition",
-					"value": "",
-					"valueType": "hardCoded",
-					"op": "haspriv"
-				}
-			},
-			{
-				"label": "viewingOrders",
-				"id": "9NjgmS5uCDapCvbT6vLQsM",
-				"conditions": {
-					"id": "xnCpiJKko2iGntLwrmUaLz",
-					"type": "datasource",
-					"name": "condition",
-					"value": true,
-					"valueType": "hardCoded",
-					"path": "Navigation:goTo.viewingOrders",
-					"dsType": "unknown",
-					"op": "eq",
-					"dataType": "boolean"
-				}
 			}
 		],
 		"defaultStates": [
 			"vvPH5Zwfi2y7TQtsKYz9QJ"
-		]
+		],
+		"currentState": "root"
 	},
 	"components": {
 		"ROOT": {
@@ -114,7 +76,7 @@
 					"height": "100%",
 					"justifyContent": "flex-start",
 					"flexDirection": "column",
-					"width": "60%"
+					"width": "70%"
 				}
 			},
 			"displayName": "Page",
@@ -156,7 +118,6 @@
 			"parent": "1W-Iq29_Kh",
 			"hidden": false,
 			"nodes": [
-				"I-qWDArQh7",
 				"FfCDbXSmbk",
 				"h2wwNg4GF0"
 			],
@@ -220,73 +181,6 @@
 			"nodes": [],
 			"linkedNodes": {}
 		},
-		"I-qWDArQh7": {
-			"type": {
-				"resolvedName": "StyleBox"
-			},
-			"isCanvas": true,
-			"props": {
-				"events": [
-					{
-						"type": "simple-action",
-						"id": "7FBTetx7QiNhbBiqBGfyRb",
-						"events": [
-							"onclick"
-						],
-						"action": "set",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "body",
-							"type": "scalar",
-							"namespace": "",
-							"dataType": "string",
-							"set": {
-								"value": "Home",
-								"type": "string"
-							},
-							"from": ""
-						},
-						"state": {}
-					}
-				],
-				"classNames": [
-					"demoButton"
-				],
-				"style": {},
-				"iterableChild": true
-			},
-			"displayName": "Stylebox",
-			"custom": {
-				"states:pMbWA7rw9nQ1GihH9WZpz4": {
-					"style": {
-						"display": "none"
-					}
-				},
-				"states:mR1x7c4tcuM5kSSf328Xvi": {
-					"style": {},
-					"classNames": [
-						"demoButton"
-					]
-				},
-				"states:jVbjQrqYHMcofkxSoxU6iw": {
-					"style": {
-						"display": "none"
-					}
-				},
-				"states:9NjgmS5uCDapCvbT6vLQsM": {
-					"classNames": [
-						"demoButton",
-						"menuSelected"
-					]
-				}
-			},
-			"parent": "An3YLmWnOn",
-			"hidden": false,
-			"nodes": [
-				"jF65aSmtev"
-			],
-			"linkedNodes": {}
-		},
 		"h2wwNg4GF0": {
 			"type": {
 				"resolvedName": "StyleBox"
@@ -348,11 +242,6 @@
 					"style": {
 						"display": "none"
 					}
-				},
-				"states:jVbjQrqYHMcofkxSoxU6iw": {
-					"style": {
-						"display": "none"
-					}
 				}
 			},
 			"parent": "An3YLmWnOn",
@@ -397,49 +286,6 @@
 			"displayName": "Text",
 			"custom": {},
 			"parent": "h2wwNg4GF0",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {}
-		},
-		"jF65aSmtev": {
-			"type": {
-				"resolvedName": "Text"
-			},
-			"isCanvas": false,
-			"props": {
-				"events": [],
-				"doc": [
-					{
-						"type": "paragraph",
-						"children": [
-							{
-								"text": "Home",
-								"bold": false,
-								"italic": false,
-								"underlined": false,
-								"strikethrough": false
-							}
-						]
-					}
-				],
-				"datasource": "",
-				"style": {
-					"textAlign": "center",
-					"width": "fit-content",
-					"marginTop": "0px",
-					"marginRight": "12px",
-					"marginBottom": "0px",
-					"marginLeft": "12px"
-				},
-				"iterableChild": true
-			},
-			"displayName": "Text",
-			"custom": {
-				"__t": {
-					"doc": []
-				}
-			},
-			"parent": "I-qWDArQh7",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}
@@ -637,17 +483,6 @@
 					"style": {},
 					"classNames": [
 						"demoButton"
-					]
-				},
-				"states:jVbjQrqYHMcofkxSoxU6iw": {
-					"style": {
-						"display": "none"
-					}
-				},
-				"states:9NjgmS5uCDapCvbT6vLQsM": {
-					"classNames": [
-						"demoButton",
-						"menuSelected"
 					]
 				}
 			},

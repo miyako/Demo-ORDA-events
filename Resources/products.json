@@ -1,9 +1,35 @@
 [
-{"ID":4598,"name":"Blue pack",
-"retailPrice":120,
-"guidelinesFile":"/docsForMary/guidelines_Blue pack",
-"costPrice":100,
-"status":"OK",
-"salesId":0,
-"margin":20}
+	{
+		"name": "Green pack",
+		"retailPrice": 120,
+		"guidelinesFile": "/docsForAnn/guidelines_Green pack",
+		"costPrice": 100,
+		"status": "OK",
+		"salesId": 1,
+		"createdBy": {
+			"__KEY": 1
+		}
+	},
+	{
+			"name": "Pink pack",
+		"retailPrice": 500,
+		"guidelinesFile": "",
+		"costPrice": 250,
+		"status": "OK",
+		"salesId": 1,
+		"createdBy": {
+			"__KEY": 1
+		}
+	},
+	{
+		"name": "Blue pack",
+		"retailPrice": 500,
+		"guidelinesFile": "/docsForAnn/guidelines_Blue pack",
+		"costPrice": 400,
+		"status": "OK",
+		"salesId": 1,
+		"createdBy": {
+			"__KEY": 1
+		}
+	}
 ]

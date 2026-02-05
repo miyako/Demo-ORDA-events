@@ -1098,7 +1098,26 @@
 			},
 			"isCanvas": false,
 			"props": {
-				"events": [],
+				"events": [
+					{
+						"type": "method",
+						"dataclass": "ProductsEntity",
+						"events": [
+							"onmouseleave",
+							"onchange"
+						],
+						"id": "96dW3xMXE3W7fPVZ3qEHeL",
+						"method": "newProduct.apply",
+						"params": [],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.ProductsEntity",
+							"datasource": "newProduct"
+						}
+					}
+				],
 				"deletable": false,
 				"className": "w-full bg-transparent",
 				"type": "number",
@@ -1173,7 +1192,26 @@
 			},
 			"isCanvas": false,
 			"props": {
-				"events": [],
+				"events": [
+					{
+						"type": "method",
+						"dataclass": "ProductsEntity",
+						"events": [
+							"onmouseleave",
+							"onchange"
+						],
+						"id": "ueD2UQDc1XjtFwaSJwHiK6",
+						"method": "newProduct.apply",
+						"params": [],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.ProductsEntity",
+							"datasource": "newProduct"
+						}
+					}
+				],
 				"deletable": false,
 				"className": "w-full bg-transparent",
 				"type": "number",

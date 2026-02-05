@@ -239,7 +239,8 @@
 					"paddingLeft": "0px",
 					"paddingTop": "0px",
 					"flexDirection": "column",
-					"paddingBottom": "0px"
+					"paddingBottom": "0px",
+					"alignItems": "center"
 				}
 			},
 			"displayName": "Page",
@@ -289,7 +290,7 @@
 					"justifyContent": "flex-start",
 					"flexDirection": "row",
 					"paddingBottom": "8px",
-					"width": "1100px",
+					"width": "910px",
 					"alignItems": "center",
 					"paddingLeft": "10px"
 				},
@@ -334,10 +335,10 @@
 					"flexDirection": "column",
 					"paddingLeft": "5px",
 					"gap": "10px",
-					"width": "1100px",
+					"width": "900px",
 					"minHeight": "40px",
 					"maxHeight": "40px",
-					"maxWidth": "1100px"
+					"maxWidth": "900px"
 				}
 			},
 			"displayName": "Stylebox",
@@ -367,8 +368,8 @@
 					"paddingRight": "0px",
 					"paddingBottom": "10px",
 					"paddingLeft": "0px",
-					"justifyContent": "flex-start",
-					"width": "1110px",
+					"justifyContent": "center",
+					"width": "910px",
 					"height": "50px",
 					"maxHeight": "50px"
 				},
@@ -399,7 +400,7 @@
 					"justifyContent": "space-between",
 					"alignItems": "start",
 					"marginLeft": "0px",
-					"width": "1150px",
+					"width": "920px",
 					"minHeight": "300px",
 					"maxHeight": "900px",
 					"height": "300px",
@@ -407,7 +408,7 @@
 				},
 				"datasource": "products",
 				"gridProps": {
-					"styleboxWidth": 1110,
+					"styleboxWidth": 910,
 					"styleboxHeight": 50,
 					"styleboxPercentWidth": "",
 					"enableMosaic": true

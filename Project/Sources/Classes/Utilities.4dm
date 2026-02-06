@@ -9,6 +9,9 @@ exposed Function getSalesPeople() : cs:C1710.SalesPeopleEntity
 	return ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId)
 	
 	
+exposed Function docsPath() : Text
+	return Session:C1714.storage.userInfo.docsFolder
+	
 	
 exposed Function resetSessionStorage()
 	

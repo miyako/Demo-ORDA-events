@@ -9,7 +9,7 @@
 		{
 			"id": "3rPN3ThaIlTF3y1oX2BKf",
 			"name": "cartStyleRow",
-			"content": "self {\n  background-color : #ffffffff;\n  box-shadow : 0px 0px 6px 0px #00000023;\n  display : flex;\n  align-items : center;\n  justify-content : space-between;\n  gap : 10px;\n  margin-top : 0px;\n  border-width : 1px;\n  border-radius : 20px;\n\t}",
+			"content": "self {\n  background-color : #ffffffff;\n  box-shadow : 0px 0px 6px 0px #00000023;\n    margin-top : 0px;\n  border-width : 1px;\n  border-radius : 20px;\n\t}",
 			"parentId": null,
 			"children": {}
 		},

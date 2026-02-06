@@ -46,6 +46,13 @@
 				"namespace": "",
 				"dataType": "bool",
 				"initialValue": false
+			},
+			{
+				"id": "docsPath",
+				"type": "scalar",
+				"namespace": "",
+				"dataType": "string",
+				"initialValue": ""
 			}
 		],
 		"styles": [
@@ -216,18 +223,19 @@
 				"events": [
 					{
 						"type": "method",
-						"dataclass": "DataStore",
+						"dataclass": "Utilities",
 						"events": [
 							"oninit"
 						],
-						"id": "23PsLQavv8K47cUDiR8soD",
-						"method": "ds.authentify",
+						"id": "jtRFcQKmaAHgi5J9tS3CXo",
+						"method": "Utilities.docsPath",
 						"params": [],
 						"datasource": "",
-						"allowedOnHTTPGET": false,
+						"methodType": "singleton",
 						"returns": {
 							"name": "result",
-							"type": "Variable"
+							"type": "Text",
+							"datasource": "docsPath"
 						}
 					}
 				],
@@ -236,11 +244,13 @@
 				"style": {
 					"display": "flex",
 					"gap": "10px",
-					"paddingLeft": "0px",
-					"paddingTop": "0px",
+					"paddingLeft": "10px",
+					"paddingTop": "5px",
 					"flexDirection": "column",
 					"paddingBottom": "0px",
-					"alignItems": "center"
+					"alignItems": "center",
+					"justifyContent": "flex-start",
+					"height": "90%"
 				}
 			},
 			"displayName": "Page",
@@ -307,6 +317,7 @@
 				"JHI6b4NLKh",
 				"FcwOANFEKp",
 				"utRxgfqYqX",
+				"RpsYc6_R3j",
 				"H6iihe4l6n"
 			],
 			"linkedNodes": {}
@@ -335,10 +346,9 @@
 					"flexDirection": "column",
 					"paddingLeft": "5px",
 					"gap": "10px",
-					"width": "900px",
+					"width": "870px",
 					"minHeight": "40px",
-					"maxHeight": "40px",
-					"maxWidth": "900px"
+					"maxHeight": "40px"
 				}
 			},
 			"displayName": "Stylebox",
@@ -400,7 +410,7 @@
 					"justifyContent": "space-between",
 					"alignItems": "start",
 					"marginLeft": "0px",
-					"width": "920px",
+					"width": "930px",
 					"minHeight": "300px",
 					"maxHeight": "900px",
 					"height": "300px",
@@ -521,12 +531,11 @@
 					"paddingRight": "0px",
 					"marginBottom": "0px",
 					"marginTop": "0px",
-					"paddingTop": "8px",
+					"paddingTop": "0px",
 					"display": "flex",
 					"flexDirection": "column",
 					"justifyContent": "flex-start",
 					"alignItems": "start",
-					"width": "auto",
 					"gap": "10px",
 					"paddingBottom": "0px",
 					"height": "auto"
@@ -613,11 +622,11 @@
 				"iterableChild": true,
 				"style": {
 					"display": "flex",
-					"fontSize": "16px",
 					"gap": "10px",
 					"alignItems": "center",
 					"paddingLeft": "10px",
-					"height": "30px"
+					"height": "30px",
+					"width": "890px"
 				}
 			},
 			"displayName": "Stylebox",
@@ -630,7 +639,8 @@
 				"9nfG4aXRnI",
 				"2wlxSLutwF",
 				"25zwcoJHjz",
-				"5DG5Y__efI"
+				"5DG5Y__efI",
+				"9FlZyA2De2"
 			],
 			"linkedNodes": {}
 		},
@@ -762,7 +772,7 @@
 					}
 				],
 				"style": {
-					"width": "60px"
+					"width": "50px"
 				},
 				"iterableChild": true
 			},
@@ -791,8 +801,9 @@
 				"style": {
 					"display": "flex",
 					"flexDirection": "column",
-					"gap": "10px",
-					"paddingBottom": "0px"
+					"gap": "15px",
+					"paddingBottom": "0px",
+					"alignItems": "start"
 				},
 				"classNames": []
 			},
@@ -1245,7 +1256,9 @@
 				"style": {
 					"display": "flex",
 					"flexDirection": "column",
-					"gap": "10px"
+					"gap": "10px",
+					"borderLeftColor": "#226aa4",
+					"borderLeftWidth": "1px"
 				},
 				"iterableChild": true
 			},
@@ -1787,7 +1800,7 @@
 					"marginTop": "0px",
 					"marginRight": "0px",
 					"marginBottom": "0px",
-					"marginLeft": "0px",
+					"marginLeft": "10px",
 					"fontFamily": "Roboto",
 					"textAlign": "center",
 					"width": "60px"
@@ -1867,7 +1880,7 @@
 			"props": {
 				"events": [],
 				"id": "text",
-				"datasource": "$This.guidelinesFile",
+				"datasource": "$This.guideLinesShortPath",
 				"doc": [
 					{
 						"type": "paragraph",
@@ -1877,7 +1890,7 @@
 							},
 							{
 								"type": "datasource",
-								"datasource": "$This.guidelinesFile",
+								"datasource": "$This.guideLinesShortPath",
 								"children": [
 									{
 										"text": "userManualPath"
@@ -1893,7 +1906,7 @@
 					}
 				],
 				"style": {
-					"width": "350px",
+					"width": "250px",
 					"fontSize": "16px"
 				},
 				"iterableChild": true
@@ -1924,10 +1937,10 @@
 				"style": {
 					"marginLeft": "0px",
 					"textAlign": "start",
-					"width": "auto"
+					"width": "100px"
 				},
 				"id": "text",
-				"datasource": "$This.status",
+				"datasource": "$This.createdBy.firstname",
 				"doc": [
 					{
 						"type": "paragraph",
@@ -1937,10 +1950,10 @@
 							},
 							{
 								"type": "datasource",
-								"datasource": "$This.status",
+								"datasource": "$This.createdBy.firstname",
 								"children": [
 									{
-										"text": "status"
+										"text": "who"
 									}
 								],
 								"dsType": "string",
@@ -1961,7 +1974,9 @@
 						"width": "200px"
 					}
 				},
-				"__t": {}
+				"__t": {
+					"doc": []
+				}
 			},
 			"parent": "blShVqIgRt",
 			"hidden": false,
@@ -1980,24 +1995,46 @@
 						"type": "paragraph",
 						"children": [
 							{
-								"text": "Guidelines file",
+								"text": "Guidelines file (in ",
 								"bold": false,
 								"italic": false,
 								"underlined": false,
 								"strikethrough": false
+							},
+							{
+								"type": "datasource",
+								"datasource": "docsPath",
+								"children": [
+									{
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false,
+										"text": "xxx"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false,
+								"text": ")"
 							}
 						]
 					}
 				],
-				"datasource": "",
+				"datasource": "docsPath",
 				"style": {
 					"marginTop": "0px",
 					"marginRight": "0px",
 					"marginBottom": "0px",
-					"marginLeft": "30px",
+					"marginLeft": "10px",
 					"fontFamily": "Roboto",
 					"textAlign": "start",
-					"width": "350px"
+					"width": "250px"
 				},
 				"iterableChild": true
 			},
@@ -2040,7 +2077,8 @@
 					"marginBottom": "0px",
 					"fontFamily": "Roboto",
 					"textAlign": "start",
-					"width": "200px"
+					"width": "200px",
+					"marginLeft": "20px"
 				},
 				"iterableChild": true
 			},
@@ -2557,7 +2595,7 @@
 			},
 			"isCanvas": false,
 			"props": {
-				"text": "Margin",
+				"text": "Margin (%)",
 				"classNames": [],
 				"events": [],
 				"moveable": false,
@@ -2599,6 +2637,104 @@
 			"displayName": "Input",
 			"custom": {},
 			"parent": "vJSFmBZWVv",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"RpsYc6_R3j": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Created by",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"marginTop": "0px",
+					"marginRight": "0px",
+					"marginBottom": "0px",
+					"fontFamily": "Roboto",
+					"textAlign": "start",
+					"width": "100px",
+					"marginLeft": "20px"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Text",
+			"custom": {
+				"__t": {
+					"doc": []
+				}
+			},
+			"parent": "bdqf7gIrZe",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"9FlZyA2De2": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"style": {
+					"marginLeft": "0px",
+					"textAlign": "start",
+					"width": "180px"
+				},
+				"id": "text",
+				"datasource": "$This.status",
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "$This.status",
+								"children": [
+									{
+										"text": "status"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": " "
+							}
+						]
+					}
+				],
+				"iterableChild": true
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:6oeZdmLc22dpkR6PWughi4": {
+					"style": {
+						"width": "200px"
+					}
+				},
+				"__t": {}
+			},
+			"parent": "blShVqIgRt",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}

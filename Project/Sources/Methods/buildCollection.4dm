@@ -1,17 +1,17 @@
 //%attributes = {}
 
 
-$products:=ds:C1482.Products.all().toCollection()
+//$products:=ds.Products.all().toCollection()
 
-$text:=JSON Stringify:C1217($products; *)
+//$text:=JSON Stringify($products; *)
 
-TEXT TO BLOB:C554($text; $blob)
+//TEXT TO BLOB($text; $blob)
 
-$userManualFile:=File:C1566("/RESOURCES/products.json")
+//$userManualFile:=File("/RESOURCES/products.json")
 
-If ($userManualFile.exists)
-	$userManualFile.delete()
-End if 
+//If ($userManualFile.exists)
+//$userManualFile.delete()
+//End if 
 
-$userManualFile.setContent($blob)
+//$userManualFile.setContent($blob)
 

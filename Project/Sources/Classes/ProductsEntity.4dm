@@ -175,8 +175,11 @@ exposed Function apply() : cs:C1710.ProductsEntity
 	//
 exposed Function get guideLinesShortPath() : Text
 	
-	return Replace string:C233(This:C1470.guidelinesFile; Session:C1714.storage.userInfo.docsFolder; "")
-	
+	If (Session:C1714.storage.userInfo#Null:C1517)
+		return Replace string:C233(This:C1470.guidelinesFile; Session:C1714.storage.userInfo.docsFolder; "")
+	Else 
+		return "Not applicable"
+	End if 
 	
 	//
 	// Computed attribute

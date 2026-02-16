@@ -2632,7 +2632,8 @@
 					"width": "100px"
 				},
 				"format": "0",
-				"dataType": "number"
+				"dataType": "number",
+				"disabled": true
 			},
 			"displayName": "Input",
 			"custom": {},

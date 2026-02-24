@@ -72,7 +72,8 @@
 		],
 		"defaultStates": [
 			"qDwtgXK1YDMFSbtWzfAbMi"
-		]
+		],
+		"currentState": "root"
 	},
 	"components": {
 		"ROOT": {
@@ -310,7 +311,7 @@
 							"type": "Text",
 							"datasource": ""
 						},
-						"feedback": true
+						"feedback": false
 					},
 					{
 						"type": "navigation",

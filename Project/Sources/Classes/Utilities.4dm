@@ -5,7 +5,6 @@ session singleton Class constructor()
 	
 	
 exposed Function getSalesPeople() : cs:C1710.SalesPeopleEntity
-	
 	return ds:C1482.SalesPeople.get(Session:C1714.storage.userInfo.salesId)
 	
 	
@@ -14,7 +13,6 @@ exposed Function docsPath() : Text
 	
 	
 exposed Function resetSessionStorage()
-	
 	Use (Session:C1714.storage)
 		Session:C1714.storage.userInfo:=New shared object:C1526("salesId"; Null:C1517)
 	End use 
@@ -44,9 +42,5 @@ exposed Function sendMailAlert($sendTo : Text)
 		
 		// Send the email
 		$status:=$google.mail.send($mail)
-		
-		//If ($status.success)
-		//Web Form.setMessage("An email has been sent! Go to your mail box")
-		//End if 
 		
 	End if 

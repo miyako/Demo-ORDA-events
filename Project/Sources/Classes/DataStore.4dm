@@ -17,7 +17,7 @@ exposed Function authentify($credentials : Object) : Boolean
 	
 	If ($credentials#Null:C1517)
 		//
-		//The session is not authenticated - Identify the user with their credentials
+		// The session is not authenticated - Identify the user with their credentials
 		//
 		$user:=ds:C1482.Users.query("identifier === :1"; $credentials.identifier).first()
 		
@@ -42,6 +42,7 @@ exposed Function authentify($credentials : Object) : Boolean
 		// The session is not authenticated
 		// An error is thrown to prevent the navigation from the Authentication page to the Main page
 		//
+		Web Form:C1735.setError("Wrong credentials")
 		throw:C1805(999; "Wrong credentials")
 	Else 
 		return $result

@@ -71,44 +71,13 @@ Function event afterSave($event : Object)
 	
 	$docIndexes:=Storage:C1525.docMap.indices("name = :1 and salesId = :2"; This:C1470.name; Session:C1714.storage.userInfo.salesId)
 	
-	If ($docIndexes.length>=0)
+	If ($docIndexes.length>=1)
 		Use (Storage:C1525.docMap)
 			For each ($index; $docIndexes)
 				Storage:C1525.docMap.remove($index)
 			End for each 
 		End use 
 	End if 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	// --------------------------------------------------------------
@@ -119,6 +88,8 @@ exposed Function saveMe($noSpaceOnDisk : Boolean; $guidelines : Text) : Object
 	
 	var $status; $docInfo : Object
 	var $blob : Blob
+	var $docs : Collection
+	
 	
 	If (This:C1470.status#"Missing guidelines file")
 		This:C1470.status:="OK"
@@ -131,20 +102,23 @@ exposed Function saveMe($noSpaceOnDisk : Boolean; $guidelines : Text) : Object
 	//
 	//The content of the guidelines file is generated here
 	//
-	TEXT TO BLOB:C554($guidelines; $blob)
-	
-	//
-	// The content of the guidelines file is stored in a map
-	//
-	If (Storage:C1525.docMap.query("name = :1"; This:C1470.name).length#0)
-		$docInfo:=Storage:C1525.docMap.query("name = :1 and salesId = :2"; This:C1470.name; Session:C1714.storage.userInfo.salesId).first()
-		Use ($docInfo)
-			$docInfo.content:=$blob
-		End use 
-	Else 
-		Use (Storage:C1525.docMap)
-			Storage:C1525.docMap.push(New shared object:C1526("name"; This:C1470.name; "salesId"; Session:C1714.storage.userInfo.salesId; "content"; $blob))
-		End use 
+	If ($guidelines#"")
+		TEXT TO BLOB:C554($guidelines; $blob)
+		
+		//
+		// The content of the guidelines file is stored in a map
+		//
+		$docs:=Storage:C1525.docMap.query("name = :1 and salesId = :2"; This:C1470.name; Session:C1714.storage.userInfo.salesId)
+		If ($docs.length#0)
+			$docInfo:=$docs.first()
+			Use ($docInfo)
+				$docInfo.content:=$blob
+			End use 
+		Else 
+			Use (Storage:C1525.docMap)
+				Storage:C1525.docMap.push(New shared object:C1526("name"; This:C1470.name; "salesId"; Session:C1714.storage.userInfo.salesId; "content"; $blob))
+			End use 
+		End if 
 	End if 
 	
 	Try
@@ -165,6 +139,8 @@ exposed Function saveMe($noSpaceOnDisk : Boolean; $guidelines : Text) : Object
 	End if 
 	
 	return $status
+	
+	
 	
 exposed Function apply() : cs:C1710.ProductsEntity
 	return This:C1470

@@ -8,7 +8,7 @@
 				"namespace": "",
 				"dataType": "object",
 				"initialValue": {
-					"identifier": "ann",
+					"identifier": "Ann",
 					"password": "a"
 				}
 			}
@@ -311,7 +311,7 @@
 							"type": "Text",
 							"datasource": ""
 						},
-						"feedback": false
+						"feedback": true
 					},
 					{
 						"type": "navigation",

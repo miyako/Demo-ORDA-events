@@ -62,7 +62,7 @@ exposed Function sendMailAlert($sendTo : Text)->$status : Object
 	If ($sendTo#"")
 		$mail.to:=$sendTo
 		$mail.sender:="fourdjapanprofessionalservices@gmail.com"
-		$mail.subject:="No more space on disk in "+Session:C1714.storage.userInfo.docsFolder
+		$mail.subject:="ディスクに十分な空きスペースがありません:"+Session:C1714.storage.userInfo.docsFolder
 		$mail.textBody:=""
 		$google:=cs:C1710.NetKit.Google.new($oAuth2; New object:C1471("mailType"; "JMAP"))
 		$status:=$google.mail.send($mail)

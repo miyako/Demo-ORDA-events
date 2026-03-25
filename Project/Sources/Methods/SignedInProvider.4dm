@@ -14,6 +14,7 @@ $param.authenticationErrorPage:=Folder:C1567(fk web root folder:K87:15).file("er
 
 $param.accessType:="offline"
 $param.token:=cs:C1710.Utilities.me._getTokensForProvider("Google")
+$param.token.expires_in:=0
 
 // Create new OAuth2 object
 return cs:C1710.NetKit.OAuth2Provider.new($param)
